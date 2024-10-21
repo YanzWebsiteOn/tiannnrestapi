@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zhizi Rest api | Documentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="out">
+    <header>
+    <div class="logo">Zhizi API`s</div>
+    <di class="header-icons">
+    </header>
+
+  <div class="cn">
+    <h1>INFORMASI</h1>
+    <h3 class="info">Selamat Datang di website rest Api Zhizi, rest Api Gratis Yang Digunakan Untuk Bot Wa, Ini Masih Tahap Beta Yah, Jadi Maklum Rest Api Masih Dikit :(</h3>
+  </div>
+
+   <div class="cn" >
+        <h1>LIST ENDPOINT</h1>
+        <div class="folder" onclick="toggleFolder('folder1', this)">
+          <h3 class="folder-title">Ai</h3>
+          <span class="icon">▶</span>
+        </div>
+        
+        <!-- Folder Items AI -->
+        <div id="folder1" class="folder-items">
+          <div class="btn-container"> 
+
+          <div class="btn">
+            <div class="btn-link">/ai4Chat</div>
+            <span class="desc-endpoint">Chat Dengan Ai4Chat</span>
+            <a href="/ai4chat?text=halo" class="btn-link">Try</a>
+          </div>
+              
+          <div class="btn">
+            <div class="btn-link">/blackboxai</div>
+            <span class="desc-endpoint">Chat Dengan BlackboxAI</span>
+            <a href="/blackboxai?text=hai" class="btn-link">Try</a>
+          </div>
+      
+          <!-- Full Kode Di Github Saya : https://github.com/Lenwyy/ -->
+      
+          <div class="btn">
+            <div class="btn-link">/luminai</div>
+            <span class="desc-endpoint">Chat Dengan LuminAI</span>
+            <a href="/luminai?text=hai" class="btn-link">Try</a>
+          </div>
+
+          <div class="btn">
+            <div class="btn-link">/zhiziai</div>
+            <span class="desc-endpoint">Chat Dengan ZhiziAI</span>
+            <a href="/zhiziai?text=hai" class="btn-link">Try</a>
+          </div>
+      
+          <div class="btn">
+            <div class="btn-link">/thinkanyai</div>
+            <span class="desc-endpoint">Chat Dengan ThinkanyAI</span>
+            <a href="/thinkany?text=hai" class="btn-link">Try</a>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Folder Berita -->
+   <div class="folder" onclick="toggleFolder('folder2', this)">
+    <h3 class="folder-title">Berita</h3>
+    <span class="icon">▶</span>
+  </div>
+
+    <!-- Folder Items Berita -->
+    <div id="folder2" class="folder-items">
+      <div class="btn-container">
+
+        <div class="btn">
+          <div class="btn-link">/api/liputan6</div>
+          <span class="desc-endpoint">Dapatkan Berita Terkini Dari Liputan6</span>
+          <a href="/liputan6" class="btn-link">Try</a>
+        </div>
+
+      </div>
+    </div> 
+
+    <!-- Folder Downloader -->
+    <div class="folder" onclick="toggleFolder('folder3', this)">
+      <h3 class="folder-title">Downloader</h3>
+      <span class="icon">▶</span>
+    </div>
+  
+      <!-- Folder Items Downloader -->
+      <div id="folder3" class="folder-items">
+        <div class="btn-container">
+
+            
+            <div class="btn">
+              <div class="btn-link">/tiktok</div>
+              <span class="desc-endpoint">Downloader Untuk Video Tiktok</span>
+              <a href="/tiktok?url=" class="btn-link">Try</a>
+            </div>
+            
+        </div>
+      </div>
+  
+      <!-- Folder Search -->
+      <div class="folder" onclick="toggleFolder('folder4', this)">
+        <h3 class="folder-title">Search</h3>
+        <span class="icon">▶</span>
+      </div>
+    
+        <!-- Folder Items Search -->
+        <div id="folder4" class="folder-items">
+          <div class="btn-container">
+  
+            <div class="btn">
+              <div class="btn-link">/caribuku</div>
+              <span class="desc-endpoint">Cari Informasi Mengenai Buku</span>
+              <a href="/caribuku?search=nabawiyah" class="btn-link">Try</a>
+            </div>
+  
+            <div class="btn">
+              <div class="btn-link">/jadwalsholat</div>
+              <span class="desc-endpoint">Cari Jadwal Sholat Dari Setiap Daerah</span>
+              <a href="/jadwalsholat?search=" class="btn-link">Try</a>
+            </div>
+  
+            <div class="btn">
+              <div class="btn-link">/rumaysho</div>
+              <span class="desc-endpoint">Cari Informasi Tafsir Dari RumaySho</span>
+              <a href="/rumaysho?search=" class="btn-link">Try</a>
+            </div>
+  
+            <div class="btn">
+              <div class="btn-link">/surah</div>
+              <span class="desc-endpoint">Cari Surah Dalam Alquran</span>
+              <a href="/surah?search=" class="btn-link">Try</a>
+            </div>
+  
+            <div class="btn">
+              <div class="btn-link">/ypia</div>
+              <span class="desc-endpoint">Cari Informasi Tafsir Dari Ypia</span>
+              <a href="/ypia?search=" class="btn-link">Try</a>
+            </div>
+
+            <div class="btn">
+              <div class="btn-link">/playstore</div>
+              <span class="desc-endpoint">Cari Informasi Game Dari Playstore</span>
+              <a href="/playstore?search=" class="btn-link">Try</a>
+            </div>
+
+          </div>
+        </div>
+
+       <!-- Folder Tools -->
+    <div class="folder" onclick="toggleFolder('folder5', this)">
+      <h3 class="folder-title">Tools</h3>
+      <span class="icon">▶</span>
+    </div>
+  
+      <!-- Folder Items Tools -->
+      <div id="folder5" class="folder-items">
+        <div class="btn-container">
+
+            
+            <div class="btn">
+              <div class="btn-link">/morse</div>
+              <span class="desc-endpoint">Ubah Teks Jadi Morse</span>
+              <a href="/morse?text=" class="btn-link">Try</a>
+            </div>
+
+    </div>
+        <div id="apiGroups"></div>
+    </div>
+
+
+    <div id="paramPopupOverlay" class="popup-overlay">
+    <div id="paramPopupContent" class="popup-content">
+        <h2 class="nnm">Parameter Requirement</h2>
+        <form id="paramForm">
+            <div id="paramInputs"></div>
+            <button type="submit" class="btn-submit">Cek API</button>
+            <button type="button" onclick="closeParamPopup()" class="btn-close">Batal</button>
+        </form>
+        <div id="endpointDescription" class="endpoint-description"></div>
+    </div>
+</div>
+
+    <div id="resultPopupOverlay" class="popup-overlay">
+    <div id="resultPopupContent" class="popup-content">
+        <h2>Respons APIs</h2>
+        <p id="apiStatus"></p>
+        <div id="currentLink" class="current-link"></div>
+        <button onclick="closeResultPopup()" class="btn-close">Tutup</button>
+    </div>
+</div>
+</div>
+<div class="ft">
+<p class="pp">ada masalah error pada api? segera repot ke admin. Website Asli By Zhannz<p>
+    <footer>
+        <p class="put">&copy; 2024 @Yanz Official,, Zhizi Api`s</p>
+    </footer>
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
