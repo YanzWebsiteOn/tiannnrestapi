@@ -22,7 +22,7 @@ module.exports = function(app) {
             if (morseCodeMap[char]) {
                 morseCode += morseCodeMap[char] + ''; // Tambahkan sandi Morse dengan spasi antar karakter
             } else {
-                morseCode += '? '; // Jika karakter tidak ditemukan di peta, gunakan tanda tanya
+                morseCode += ' '; // Jika karakter tidak ditemukan di peta, gunakan tanda tanya
             }
         }
 
