@@ -20,7 +20,7 @@ module.exports = function(app) {
 
         for (let char of upperText) {
             if (morseCodeMap[char]) {
-                morseCode += morseCodeMap[char] + ' '; // Tambahkan sandi Morse dengan spasi antar karakter
+                morseCode += morseCodeMap[char] + ''; // Tambahkan sandi Morse dengan spasi antar karakter
             } else {
                 morseCode += '? '; // Jika karakter tidak ditemukan di peta, gunakan tanda tanya
             }
@@ -44,8 +44,8 @@ module.exports = function(app) {
                 status: 200,
                 creator: "Zhizi",
                 data: {
-                    originalText: text,
-                    morseCode: result
+                    originalMorse: text,
+                    TextResult: result
                 }
             });
         } catch (error) {
