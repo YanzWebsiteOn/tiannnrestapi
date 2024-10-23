@@ -37,7 +37,7 @@ async function tiktokStalk(username) {
 }
 
 // Endpoint tiktokstalk
-  app.get('/tools/ttstalk', async (req, res) => {
+  app.get('/ttstalk', async (req, res) => {
     try {
       const { text } = req.query;
       if (!text) {
