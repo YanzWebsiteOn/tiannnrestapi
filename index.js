@@ -39,6 +39,7 @@ require('./search/playstore')(app);
 // Import Tools
 require('./tools/morse')(app);
 require('./tools/totext')(app);
+require('./tools/ttstalk')(app);
 
 // Full Kode Di Github Saya : https://github.com/YanzOffc/
 
