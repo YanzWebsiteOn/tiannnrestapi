@@ -1079,3 +1079,19 @@ pre {
   color: white;
   font-family: 'Poppins', sans-serif;
 }
+
+.response {
+  background: #ffffff25;
+  backdrop-filter: blur(2px);
+  color: white;
+  padding: 1rem;
+  border-radius: 25px;
+}
+
+
+.code {
+  font-size: 25px;
+  color: black;
+  font-family: 'MyBoldFont', Sans-Serif;
+  font-weight: 500;
+}
