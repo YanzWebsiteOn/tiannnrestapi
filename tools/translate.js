@@ -3,7 +3,7 @@ const axios = require('axios');
 // Fungsi untuk scraping terjemahan
 const translateText = async (text, lang) => {
     try {
-        const response = await axios.get('https://translate-api-example.com/translate', {
+        const response = await axios.get(`https://translate-api-example.com/translate`, {
             params: {
                 q: text,
                 target: lang
