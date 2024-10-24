@@ -4,11 +4,11 @@ module.exports = (app) => {
     // Fungsi untuk scraping terjemahan
     const translateText = async (text, lang) => {
         try {
-            const response = await axios.get('https://translate-api-example.com/translate', {
-                params: {
-                    q: text,
-                    target: lang
-                }
+            const response = await axios.post('https://libretranslate.com/translate', {
+                q: text,
+                source: 'auto',
+                target: lang,
+                format: 'text'
             });
 
             const translatedText = response.data.translatedText;
