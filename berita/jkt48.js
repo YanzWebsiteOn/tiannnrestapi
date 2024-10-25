@@ -15,12 +15,14 @@ module.exports = (app) => {
         const title = $(element).find('.news-title').text().trim();
         const date = $(element).find('.news-date').text().trim();
         const link = $(element).find('a').attr('href');
+        const id = link.split('/').pop(); // Mengambil ID dari URL berita
         
         if (title && date && link) {
           beritaList.push({
             title,
             date,
-            link: `https://jkt48.com${link}`
+            link: `https://jkt48.com${link}`,
+            id // Menambahkan ID ke objek berita
           });
         }
       });
@@ -57,12 +59,47 @@ module.exports = (app) => {
         data: filteredData.map(berita => ({
           title: berita.title,
           date: berita.date,
-          link: berita.link
+          link: berita.link,
+          id: berita.id // Menyertakan ID di respons
         }))
       });
     } catch (error) {
       console.error('Terjadi kesalahan saat mengambil data:', error);
       res.status(500).json({ error: 'Terjadi kesalahan saat mengambil data.' });
+    }
+  });
+
+  // Endpoint untuk mengambil detail berita berdasarkan ID
+  app.get('/beritajkt48/:id', async (req, res) => {
+    const { id } = req.params; // Mendapatkan ID dari parameter URL
+    const detailUrl = `https://jkt48.com/news/detail/id/${id}?lang=id`;
+
+    try {
+      const response = await axios.get(detailUrl);
+      const html = response.data;
+      const $ = cheerio.load(html);
+
+      // Mengambil detail berita
+      const title = $('.news-title').text().trim();
+      const date = $('.news-date').text().trim();
+      const content = $('.news-content').html(); // Ambil HTML konten berita
+
+      if (!title || !date || !content) {
+        return res.status(404).json({ message: 'Detail berita tidak ditemukan.' });
+      }
+
+      res.status(200).json({
+        status: 200,
+        creator: "Zhizi",
+        data: {
+          title,
+          date,
+          content
+        }
+      });
+    } catch (error) {
+      console.error('Terjadi kesalahan saat mengambil detail berita:', error);
+      res.status(500).json({ error: 'Terjadi kesalahan saat mengambil detail berita.' });
     }
   });
 };
