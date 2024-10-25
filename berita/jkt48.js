@@ -45,29 +45,27 @@ async function scrapeJkt48() {
     return members;
 }
 
-// Fungsi untuk menghubungkan ke aplikasi Express
-module.exports = (app) => {
-    app.get('/memberjkt48', async (req, res) => {
-        try {
-            const searchQuery = req.query.search ? req.query.search.toLowerCase() : '';
-            const data = await scrapeJkt48();
+app.get('/memberjkt48', async (req, res) => {
+    try {
+        const searchQuery = req.query.search ? req.query.search.toLowerCase() : '';
+        const data = await scrapeJkt48();
 
-            // Filter data berdasarkan query pencarian
-            const filteredData = searchQuery
-                ? data.filter(member => member.name.toLowerCase().includes(searchQuery))
-                : data;
+        // Filter data berdasarkan query pencarian
+        const filteredData = searchQuery
+            ? data.filter(member => member.name.toLowerCase().includes(searchQuery))
+            : data;
 
-            if (filteredData.length === 0) {
-                return res.status(404).json({ message: 'Tidak ada member ditemukan.' });
-            }
-
-            res.status(200).json({
-                status: 200,
-                creator: "Zhizi",
-                data: filteredData
-            });
-        } catch (error) {
-            res.status(500).json({ error: 'Terjadi kesalahan saat mengambil data.' });
+        if (filteredData.length === 0) {
+            return res.status(404).json({ message: 'Tidak ada member ditemukan.' });
         }
-    });
-};
+
+        res.status(200).json({
+            status: 200,
+            creator: "Zhizi",
+            data: filteredData
+        });
+    } catch (error) {
+        console.error(error); // Menampilkan error di konsol
+        res.status(500).json({ error: 'Terjadi kesalahan saat mengambil data.', details: error.message });
+    }
+});
