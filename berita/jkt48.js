@@ -1,3 +1,4 @@
+// File: ./berita/jkt48.js
 const axios = require('axios');
 const cheerio = require('cheerio');
 
@@ -46,7 +47,8 @@ module.exports = (app) => {
 
       // Jika ada parameter text, filter berita berdasarkan judul
       const filteredData = text
-        ? data.filter(berita => berita.title.toLowerCase().includes(text.toLowerCase()))
+        ? data.filter(berita => berita.title.toLowerCase().includes(text.toLowerCase()) || 
+                                berita.title.toLowerCase().startsWith(text.toLowerCase()))
         : data;
 
       if (filteredData.length === 0) {
