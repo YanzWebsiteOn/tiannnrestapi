@@ -1,107 +1,73 @@
-// File: ./berita/jkt48.js
 const axios = require('axios');
 const cheerio = require('cheerio');
 
+async function scrapeJkt48() {
+    const url = 'https://jkt48.com/member'; // URL yang sesuai untuk member JKT48
+    const response = await axios.get(url);
+    const $ = cheerio.load(response.data);
+    const members = [];
+
+    $('.member-list .member').each((index, element) => {
+        const name = $(element).find('.name').text().trim();
+        const image = $(element).find('img').attr('src');
+        const profileLink = $(element).find('a').attr('href');
+        const id = profileLink ? profileLink.split('/').pop() : null; // Mengambil ID member
+
+        // Mengambil detail member dari halaman profil
+        const memberDetails = {
+            id,
+            name,
+            image,
+            profileLink,
+            birthday: null,
+            bloodType: null,
+            horoscope: null,
+            height: null,
+        };
+
+        // Mengambil detail lebih lanjut dari halaman member
+        axios.get(profileLink).then(profileResponse => {
+            const profilePage = cheerio.load(profileResponse.data);
+
+            // Ambil informasi tambahan (ini bisa disesuaikan dengan elemen yang ada di halaman)
+            memberDetails.birthday = profilePage('.birthday').text().trim() || 'Tidak ada data';
+            memberDetails.bloodType = profilePage('.blood-type').text().trim() || 'Tidak ada data';
+            memberDetails.horoscope = profilePage('.horoscope').text().trim() || 'Tidak ada data';
+            memberDetails.height = profilePage('.height').text().trim() || 'Tidak ada data';
+
+            members.push(memberDetails);
+        });
+    });
+
+    // Tunggu sampai semua detail member diambil
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    return members;
+}
+
+// Fungsi untuk menghubungkan ke aplikasi Express
 module.exports = (app) => {
-  // Fungsi untuk melakukan scraping berita dari JKT48
-  async function newsjkt() {
-    try {
-      const response = await axios.get('https://jkt48.com');
-      const html = response.data;
-      const $ = cheerio.load(html);
+    app.get('/memberjkt48', async (req, res) => {
+        try {
+            const searchQuery = req.query.search ? req.query.search.toLowerCase() : '';
+            const data = await scrapeJkt48();
 
-      const beritaList = [];
-      
-      $('.news-list').find('li').each((index, element) => {
-        const title = $(element).find('.news-title').text().trim();
-        const date = $(element).find('.news-date').text().trim();
-        const link = $(element).find('a').attr('href');
-        const id = link.split('/').pop(); // Mengambil ID dari URL berita
-        
-        if (title && date && link) {
-          beritaList.push({
-            title,
-            date,
-            link: `https://jkt48.com${link}`,
-            id // Menambahkan ID ke objek berita
-          });
+            // Filter data berdasarkan query pencarian
+            const filteredData = searchQuery
+                ? data.filter(member => member.name.toLowerCase().includes(searchQuery))
+                : data;
+
+            if (filteredData.length === 0) {
+                return res.status(404).json({ message: 'Tidak ada member ditemukan.' });
+            }
+
+            res.status(200).json({
+                status: 200,
+                creator: "Zhizi",
+                data: filteredData
+            });
+        } catch (error) {
+            res.status(500).json({ error: 'Terjadi kesalahan saat mengambil data.' });
         }
-      });
-
-      return beritaList;
-    } catch (error) {
-      console.error('Error fetching JKT48 news:', error);
-      throw error;
-    }
-  }
-
-  // Endpoint untuk scraper Info JKT48 dengan query parameter
-  app.get('/beritajkt48', async (req, res) => { 
-    const { text } = req.query; // Mendapatkan nilai dari query parameter
-
-    try {
-      const data = await newsjkt(); 
-      if (data.length === 0) {
-        return res.status(404).json({ message: 'Tidak ada berita terbaru yang ditemukan.' });
-      }
-
-      // Jika ada parameter text, filter berita berdasarkan judul
-      const filteredData = text
-        ? data.filter(berita => berita.title.toLowerCase().includes(text.toLowerCase()) || 
-                                berita.title.toLowerCase().startsWith(text.toLowerCase()))
-        : data;
-
-      if (filteredData.length === 0) {
-        return res.status(404).json({ message: 'Tidak ada berita yang cocok dengan kriteria.' });
-      }
-
-      res.status(200).json({
-        status: 200,
-        creator: "Zhizi", 
-        data: filteredData.map(berita => ({
-          title: berita.title,
-          date: berita.date,
-          link: berita.link,
-          id: berita.id // Menyertakan ID di respons
-        }))
-      });
-    } catch (error) {
-      console.error('Terjadi kesalahan saat mengambil data:', error);
-      res.status(500).json({ error: 'Terjadi kesalahan saat mengambil data.' });
-    }
-  });
-
-  // Endpoint untuk mengambil detail berita berdasarkan ID
-  app.get('/beritajkt48/:id', async (req, res) => {
-    const { id } = req.params; // Mendapatkan ID dari parameter URL
-    const detailUrl = `https://jkt48.com/news/detail/id/${id}?lang=id`;
-
-    try {
-      const response = await axios.get(detailUrl);
-      const html = response.data;
-      const $ = cheerio.load(html);
-
-      // Mengambil detail berita
-      const title = $('.news-title').text().trim();
-      const date = $('.news-date').text().trim();
-      const content = $('.news-content').html(); // Ambil HTML konten berita
-
-      if (!title || !date || !content) {
-        return res.status(404).json({ message: 'Detail berita tidak ditemukan.' });
-      }
-
-      res.status(200).json({
-        status: 200,
-        creator: "Zhizi",
-        data: {
-          title,
-          date,
-          content
-        }
-      });
-    } catch (error) {
-      console.error('Terjadi kesalahan saat mengambil detail berita:', error);
-      res.status(500).json({ error: 'Terjadi kesalahan saat mengambil detail berita.' });
-    }
-  });
+    });
 };
