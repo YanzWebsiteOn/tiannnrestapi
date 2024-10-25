@@ -8,7 +8,71 @@
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" type="x-icon" href="https://files.catbox.moe/tj639i.jpg">
 </head>
+    <style>
+        /* Loading Overlay */
+.loading-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    z-index: 1000;
+}
+
+/* Battery */
+.battery {
+    width: 100px; /* Lebar baterai */
+    height: 50px; /* Tinggi baterai */
+    background: #3498db; /* Warna baterai */
+    position: relative;
+    border-radius: 5px; /* Sudut melengkung */
+    animation: charge 1.5s infinite; /* Animasi */
+}
+
+/* Battery Cap */
+.battery::before {
+    content: '';
+    width: 10px; /* Lebar tutup baterai */
+    height: 20px; /* Tinggi tutup baterai */
+    background: #3498db; /* Warna tutup baterai */
+    position: absolute;
+    top: 15px; /* Posisi tutup baterai */
+    left: 100%; /* Menempatkan di samping kanan baterai */
+    border-radius: 2px; /* Sudut melengkung */
+}
+
+/* Animation Keyframes */
+@keyframes charge {
+    0%, 100% {
+        background: #3498db; /* Warna baterai saat penuh */
+    }
+    50% {
+        background: #2ecc71; /* Warna hijau saat mengisi */
+    }
+}
+
+/* Additional styles for better appearance */
+body {
+    font-family: 'Roboto', sans-serif; /* Font utama */
+}
+
+h1, h3 {
+    text-align: center; /* Rata tengah judul */
+}
+
+.cn {
+    margin: 20px; /* Margin untuk konten */
+}
+    </style>
 <body>
+
+    <div class="loading-overlay" style="display: none;">
+        <div class="battery"></div>
+    </div>
     
   <div class="out">
     <header>
@@ -244,5 +308,25 @@
     </footer>
 </div>
     <script src="script.js"></script>
+
+    <script>
+    // Fungsi untuk menampilkan loading
+    function showLoading() {
+        document.querySelector('.loading-overlay').style.display = 'flex';
+    }
+
+    // Fungsi untuk menyembunyikan loading
+    function hideLoading() {
+        document.querySelector('.loading-overlay').style.display = 'none';
+    }
+
+    // Contoh penggunaan
+    window.onload = function() {
+        hideLoading(); // Sembunyikan loading setelah halaman dimuat
+    };
+
+    // Jika kamu ingin menampilkan loading sebelum memuat konten tertentu
+    // showLoading(); // Panggil fungsi ini sebelum melakukan aksi yang memerlukan loading
+    </script>
 </body>
 </html>
