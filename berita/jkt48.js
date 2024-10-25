@@ -12,8 +12,8 @@ async function scrapeJkt48() {
     const memberLinks = [];
 
     $('.member-list .member').each((index, element) => {
-        const name = $(element).find('.name').text().trim();
-        const profileLink = $(element).find('a').attr('href');
+        const name = $(element).find('.name').text().trim(); // Mengambil nama member
+        const profileLink = $(element).find('a').attr('href'); // Mengambil link profil
         memberLinks.push({ name, profileLink }); // Simpan nama dan link profil
     });
 
@@ -22,16 +22,18 @@ async function scrapeJkt48() {
         const profileResponse = await axios.get(member.profileLink);
         const profilePage = cheerio.load(profileResponse.data);
 
-        // Ambil informasi detail member
-        const id = profile.memberLink.split('/').pop(); // Mengambil ID dari URL
-        const image = profilePage('.profile-img img').attr('src'); // Ganti dengan selector yang benar
-        const birthday = profilePage('.birthday').text().trim() || 'Tidak ada data';
-        const bloodType = profilePage('.blood-type').text().trim() || 'Tidak ada data';
-        const horoscope = profilePage('.horoscope').text().trim() || 'Tidak ada data';
-        const height = profilePage('.height').text().trim() || 'Tidak ada data';
+        // Mengambil ID dari URL
+        const id = member.profileLink.split('/').pop(); // Mengambil ID member dari URL
+
+        // Mengambil data dari halaman profil
+        const image = profilePage('.member-image img').attr('src'); // Selector untuk gambar
+        const birthday = profilePage('.member-detail .birthday').text().trim() || 'Tidak ada data'; // Selector untuk tanggal lahir
+        const bloodType = profilePage('.member-detail .blood-type').text().trim() || 'Tidak ada data'; // Selector untuk golongan darah
+        const horoscope = profilePage('.member-detail .horoscope').text().trim() || 'Tidak ada data'; // Selector untuk horoskop
+        const height = profilePage('.member-detail .height').text().trim() || 'Tidak ada data'; // Selector untuk tinggi badan
 
         members.push({
-            id, // Menyimpan ID member
+            id, // ID member
             name: id, // Mengganti nama member dengan ID
             image,
             profileLink: member.profileLink,
@@ -54,7 +56,7 @@ module.exports = (app) => {
 
             // Filter data berdasarkan query pencarian
             const filteredData = searchQuery
-                ? data.filter(member => member.id.toLowerCase().includes(searchQuery))
+                ? data.filter(member => member.id.includes(searchQuery)) // Mencari berdasarkan ID
                 : data;
 
             if (filteredData.length === 0) {
