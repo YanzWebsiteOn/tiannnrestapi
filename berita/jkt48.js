@@ -31,7 +31,7 @@ async function newsjkt() {
 }
 
 // Endpoint untuk scraper Info JKT48
-app.get('/beritajkt48', async (req, res) => { 
+app.get('/jkt48', async (req, res) => { 
   try {
     const data = await newsjkt(); 
     if (data.length === 0) {
