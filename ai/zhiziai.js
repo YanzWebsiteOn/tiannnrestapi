@@ -1,3 +1,6 @@
+module.exports = function(app) {
+
+
 async function BlackBoxSessi(prompt, session, SystemData) {//@rifza.p.p
     if (!global.messages) global.messages = {}//Deteksi penyimpanan data pesan
     if (!(session in messages)) messages[session] = [] //Deteksi sesi id pesan dan otomatis nambah kalo id gaada
@@ -73,3 +76,4 @@ app.get('/zhiziai', async (req, res) => {
       res.status(500).json({ error: error.message });
     }
   });
+}
