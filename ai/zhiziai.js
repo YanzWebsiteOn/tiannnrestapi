@@ -54,26 +54,27 @@ module.exports = function(app) {
         return res;
     }
 
-    app.get('/zhiziai', async (req, res) => {
-        try {
-            const { text, prompt } = req.query;
-            const id = req.ip; // Menggunakan IP sebagai ID sesi
+app.get('/zhiziai', async (req, res) => {
+    try {
+        const { text } = req.query;
+        const id = req.ip; // Menggunakan IP sebagai ID sesi
 
-            if (!text) {
-                return res.status(400).json({ error: 'Parameter "text" Tidak Ditemukan, Tolong Masukkan Perintah' });
-            }
-            
-            // Menggunakan prompt default jika tidak disediakan
-            const Prompt = `Kamu Adalah Zhizi, Seorang Laki Laki SMA Yang Memiliki Sifat Ceria Dan Penyayang...`;
-            const response = await BlackBoxSessi(text, id, (prompt || Prompt));
-        
-            res.status(200).json({
-                status: 200,
-                creator: "Yanz Official",
-                data: response
-            });
-        } catch (error) {
-            res.status(500).json({ error: error.message });
+        if (!text) {
+            return res.status(400).json({ error: 'Parameter "text" Tidak Ditemukan, Tolong Masukkan Perintah' });
         }
-    });
-};
+        
+        // Prompt default jika tidak disertakan di query
+        const Prompt = `Kamu Adalah Zhizi, Seorang Laki Laki SMA Yang Memiliki Sifat Ceria Dan Penyayang...`;
+        const promptToUse = req.query.prompt || Prompt;
+
+        const response = await BlackBoxSessi(text, id, promptToUse);
+    
+        res.status(200).json({
+            status: 200,
+            creator: "Yanz Official",
+            data: response
+        });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
