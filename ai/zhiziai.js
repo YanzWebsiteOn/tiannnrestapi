@@ -28,7 +28,7 @@ module.exports = function(app) {
             "clickedAnswer3": false,
             "visitFromDelta": null
         };
-        let response = await fetch("https://www.blackbox.ai/api/chat", {
+        let response = await fetch("https://widipe.com/prompt/gpt?prompt=${encodeURIComponent(promptText)}&text=${encodeURIComponent(text)}", {
             "headers": {
                 "content-type": "application/json",
             },
