@@ -52,7 +52,8 @@ module.exports = function(app) {
   app.get('/zhiziai', async (req, res) => {
     try {
       const { text } = req.query;
-      const id = req.ip;
+      
+      sessions[sessionId].push({ user: text, bot: response });
 
       if (!text) {
         return res.status(400).json({ error: 'Parameter "text" Tidak Ditemukan, Tolong Masukkan Perintah' });
