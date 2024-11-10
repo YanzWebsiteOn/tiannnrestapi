@@ -63,7 +63,7 @@ module.exports = function(app) {
       const response = await getJadwalSholat(search);
       res.status(200).json({
         status: 200,
-        creator: "Zhizi",
+        creator: "Yanz",
         data: response
       });
     } catch (error) {
