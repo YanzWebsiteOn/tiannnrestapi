@@ -43,7 +43,7 @@ module.exports = function(app) {
             const result = await convertToText(morse);
             res.status(200).json({
                 status: 200,
-                creator: "Zhizi",
+                creator: "Yanz",
                 data: {
                     originalMorse: morse,
                     TextResult: result
