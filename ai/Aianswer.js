@@ -37,7 +37,7 @@ app.get('/aianswer', async (req, res) => {
       const response = await aiAnswer.chat(text); // Panggil metode 'chat'
       res.status(200).json({
         status: 200,
-        creator: "Zhizi",
+        creator: "Yanz",
         data: response
       });
     } catch (error) {
