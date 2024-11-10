@@ -47,7 +47,7 @@ module.exports = function(app) {
       const response = await tiktok2(url);
       res.status(200).json({
         status: 200,
-        creator: "Zhizi",
+        creator: "Yanz",
         data: response
       });
     } catch (error) {
