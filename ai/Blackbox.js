@@ -35,7 +35,7 @@ app.get('/blackboxai', async (req, res) => {
       const response = await blackboxAIChat(text);
       res.status(200).json({
         status: 200,
-        creator: "Zhizi",
+        creator: "Yanz",
         data: { response }
       });
     } catch (error) {
