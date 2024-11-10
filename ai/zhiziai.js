@@ -1,5 +1,3 @@
-Scraper And End Point LenwyAI (Custom AI)
-
 const axios = require('axios');
 
 module.exports = function(app) {
@@ -35,7 +33,7 @@ app.get('/lenwyai', async (req, res) => {
 
     res.status(200).json({
       status: 200,
-      creator: "Lenwy",
+      creator: "Yanz",
       data: response
     });
   } catch (error) {
