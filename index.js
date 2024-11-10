@@ -41,6 +41,7 @@ require('./search/playstore')(app);
 require('./tools/morse')(app);
 require('./tools/totext')(app);
 require('./tools/ttstalk')(app);
+require('./tools/tekstoimg')(app);
 
 // Full Kode Di Github Saya : https://github.com/YanzOffc/
 
