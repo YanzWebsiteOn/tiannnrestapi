@@ -5,7 +5,7 @@ module.exports = function(app) {
 // Scraper function
 async function getDenisaResponse(text, promptText) {
   try {
-    const url = https://aemt.uk.to/prompt/gpt?prompt=${encodeURIComponent(promptText)}&text=${encodeURIComponent(text)};
+    const url = `https://aemt.uk.to/prompt/gpt?prompt=${encodeURIComponent(promptText)}&text=${encodeURIComponent(text)}`;
     const response = await axios.get(url);
 
     if (response.data.status) {
