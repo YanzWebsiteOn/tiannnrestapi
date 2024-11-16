@@ -20,7 +20,7 @@ async function getDenisaResponse(text, promptText) {
 }
 
 // Endpoint '/christyai'
-app.get('/cristyai', async (req, res) => {
+app.get('/christyai', async (req, res) => {
   try {
     const { text, prompt } = req.query;
     if (!text) {
