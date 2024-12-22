@@ -9,7 +9,7 @@ async function getDenisaResponse(text, promptText) {
     const response = await axios.get(url);
 
     if (response.data.status) {
-      return response.data.result;
+      return response.data;
     } else {
       throw new Error('API Error: Response status is false');
     }
