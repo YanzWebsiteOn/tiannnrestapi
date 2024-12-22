@@ -5,11 +5,11 @@ module.exports = function(app) {
 // Scraper function
 async function getDenisaResponse(text, promptText) {
   try {
-    const url = `https://aemt.uk.to/prompt/gpt?prompt=${encodeURIComponent(promptText)}&text=${encodeURIComponent(text)}`;
+    const url = `https://api.siputzx.my.id/api/ai/gpt3?prompt=${encodeURIComponent(promptText)}&content=${encodeURIComponent(text)}`;
     const response = await axios.get(url);
 
     if (response.data.status) {
-      return response.data.result;
+      return response.data;
     } else {
       throw new Error('API Error: Response status is false');
     }
