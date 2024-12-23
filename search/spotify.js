@@ -2,9 +2,9 @@ const axios = require('axios');
 
 module.exports = function(app) {
   // Scraper function
-  async function getDenisaResponse(query) {
+  async function getDenisaResponse(search) {
     try {
-      const url = `https://restapi.yanzoffc.xyz/spotify?query=${encodeURIComponent(query)}`;
+      const url = `https://restapi.yanzoffc.xyz/spotify?query=${encodeURIComponent(search)}`;
       const response = await axios.get(url);
 
       if (response.data && response.data.data) {
@@ -37,12 +37,12 @@ module.exports = function(app) {
   // Endpoint '/spotify'
   app.get('/spotify', async (req, res) => {
     try {
-      cconst { search } = req.query; // Mengambil parameter pencarian dari query
+      const search = req.query.search;
     if (!search) {
-      return res.status(400).json({ error: 'Parameter "search" tidak ditemukan, harap masukkan query pencarian.' });
+      return res.status(400).json({ error: 'Parameter "search" Tidak Ditemukan, Tolong Masukkan Nomor Surah' });
     }
-
-      const response = await getDenisaResponse(query);
+      
+      const response = await getDenisaResponse(search);
 
       if (typeof response === 'string') {
         return res.status(500).json({ error: response });
