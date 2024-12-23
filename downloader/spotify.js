@@ -7,27 +7,25 @@ module.exports = function(app) {
       const url = `https://api.siputzx.my.id/api/s/spotify?query=${encodeURIComponent(text)}`;
       const response = await axios.get(url);
 
-      if (response.data.status) {
+      if (response.data && response.data.data) {
         // Format data to match the expected response structure
         const formattedData = response.data.data.map(data => ({
-          thumbnail: data.thumbnail,
-          title: data.title,
-          artist: {
-            external_urls: {
-              spotify: data.artist.external_urls.spotify
-            },
-            href: data.artist.href,
-            id: data.artist.id,
-            name: data.artist.name,
-            type: data.artist.type,
-            uri: data.artist.uri
-          },
-          duration: data.duration,
-          preview: data.preview
+          thumbnail: data.thumbnail || '',
+          title: data.title || 'Unknown Title',
+          artist: data.artist ? {
+            external_urls: data.artist.external_urls || {},
+            href: data.artist.href || '',
+            id: data.artist.id || '',
+            name: data.artist.name || 'Unknown Artist',
+            type: data.artist.type || '',
+            uri: data.artist.uri || ''
+          } : null,
+          duration: data.duration || 'N/A',
+          preview: data.preview || null
         }));
         return formattedData;
       } else {
-        throw new Error('API Error: Response status is false');
+        throw new Error('API Error: Response data structure is not as expected');
       }
     } catch (error) {
       console.error('Error:', error.message);
@@ -53,7 +51,8 @@ module.exports = function(app) {
         data: response
       });
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      console.error('Server Error:', error.message);
+      res.status(500).json({ error: 'Terjadi kesalahan di server.' });
     }
   });
 };
