@@ -29,6 +29,7 @@ require('./berita/liputan6')(app);
 // Import Downloader 
 require('./downloader/tiktok')(app);
 require('./downloader/mp4')(app);
+require('./downloader/spotify')(app);
 
 // Import Search
 require('./search/goodread')(app);
