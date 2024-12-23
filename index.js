@@ -22,6 +22,7 @@ require('./ai/LuminAI')(app);
 require('./ai/zhiziai')(app);
 require('./ai/Thinkai')(app);
 require('./ai/ChristyAi')(app);
+require('./ai/joko')(app);
 
 // Import Berita
 require('./berita/liputan6')(app);
