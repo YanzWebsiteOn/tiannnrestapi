@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Scraper function untuk MediaFire
   async function getMediaFireResponse(url) {
     try {
@@ -18,36 +18,15 @@ module.exports = function(app) {
     }
   }
 
-  // Endpoint '/spotify'
-  app.get('/mediafire', async (req, res) => {
-    try {
-      const search = req.query.search;
-      if (!search) {
-        return res.status(400).json({ error: 'Parameter "search" tidak ditemukan. Tolong masukkan parameter pencarian.' });
-      }
-
-      const response = await getMeidafireResponse(url);
-
-      if (typeof response === 'string') {
-        return res.status(500).json({ error: response });
-      }
-
-      res.status(200).json({
-        data: response
-      });
-    } catch (error) {
-      console.error('Server Error:', error.message);
-      res.status(500).json({ error: 'Terjadi kesalahan di server.' });
-    }
-  });
-
   // Endpoint '/mediafire'
   app.get('/mediafire', async (req, res) => {
     try {
       const { url } = req.query; // Mengambil parameter URL dari query
-    if (!url) {
-      return res.status(400).json({ error: 'Parameter "url" tidak ditemukan, harap masukkan URL yang valid.' });
-    }
+      if (!url) {
+        return res
+          .status(400)
+          .json({ error: 'Parameter "url" tidak ditemukan, harap masukkan URL yang valid.' });
+      }
 
       const response = await getMediaFireResponse(url);
 
@@ -56,7 +35,13 @@ module.exports = function(app) {
       }
 
       res.status(200).json({
-        data: response
+        status: true
+        data: {
+          fileName: response.fileName,
+          downloadLink: response.downloadLink,
+          fileSize: response.fileSize,
+          meta: response.meta,
+        },
       });
     } catch (error) {
       console.error('Server Error:', error.message);
