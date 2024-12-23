@@ -22,11 +22,9 @@ module.exports = function (app) {
   app.get('/mediafire', async (req, res) => {
     try {
       const { url } = req.query; // Mengambil parameter URL dari query
-      if (!url) {
-        return res
-          .status(400)
-          .json({ error: 'Parameter "url" tidak ditemukan, harap masukkan URL yang valid.' });
-      }
+    if (!url) {
+      return res.status(400).json({ error: 'Parameter "url" tidak ditemukan, harap masukkan URL yang valid.' });
+    }
 
       const response = await getMediaFireResponse(url);
 
