@@ -29,7 +29,6 @@ require('./berita/liputan6')(app);
 // Import Downloader 
 require('./downloader/tiktok')(app);
 require('./downloader/mp4')(app);
-require('./downloader/spotify')(app);
 
 // Import Search
 require('./search/goodread')(app);
@@ -38,6 +37,7 @@ require('./search/rumaysho')(app);
 require('./search/surah')(app);
 require('./search/jadwalsholat')(app);
 require('./search/playstore')(app);
+require('./search/spotify')(app);
 
 // Import Tools
 require('./tools/morse')(app);
