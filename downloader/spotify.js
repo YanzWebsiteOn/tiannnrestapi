@@ -9,21 +9,21 @@ module.exports = function(app) {
 
       if (response.data.status) {
         // Format data to match the expected response structure
-        const formattedData = response.data.data.map(item => ({
-          thumbnail: item.thumbnail,
-          title: item.title,
+        const formattedData = response.data.data.map(data => ({
+          thumbnail: data.thumbnail,
+          title: data.title,
           artist: {
             external_urls: {
-              spotify: item.artist.external_urls.spotify
+              spotify: data.artist.external_urls.spotify
             },
-            href: item.artist.href,
-            id: item.artist.id,
-            name: item.artist.name,
-            type: item.artist.type,
-            uri: item.artist.uri
+            href: data.artist.href,
+            id: data.artist.id,
+            name: data.artist.name,
+            type: data.artist.type,
+            uri: data.artist.uri
           },
-          duration: item.duration,
-          preview: item.preview
+          duration: data.duration,
+          preview: data.preview
         }));
         return formattedData;
       } else {
