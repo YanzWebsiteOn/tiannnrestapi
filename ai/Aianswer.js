@@ -28,7 +28,7 @@ const aiAnswer = {
 };
 
 // Endpoint Aianswer
-app.get('/ai/aianswer', async (req, res) => {
+app.get('/aianswer', async (req, res) => {
     try {
       const { text } = req.query;
       if (!text) {
