@@ -4,7 +4,7 @@ module.exports = function (app) {
   // Scraper function untuk MediaFire
   async function getMediaFireResponse(url) {
     try {
-      const apiUrl = `https://domainkmu.com/mediafire?url=${encodeURIComponent(url)}`;
+      const apiUrl = `https://api.siputzx.my.id/api/d/mediafire?url=${encodeURIComponent(url)}`;
       const response = await axios.get(apiUrl);
 
       if (response.data && response.data.data) {
