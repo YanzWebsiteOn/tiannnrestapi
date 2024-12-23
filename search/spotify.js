@@ -4,33 +4,33 @@ module.exports = function(app) {
   // Scraper function
   async function getDenisaResponse(search) {
     try {
-      const url = `https://restapi.yanzoffc.xyz/spotify?query=${encodeURIComponent(search)}`;
+      const url = `https://api.siputzx.my.id/api/s/spotify?query=${encodeURIComponent(search)}`;
       const response = await axios.get(url);
 
-      if (response.data && response.data.data) {
+      if (response.data && Array.isArray(response.data.data)) {
         const formattedData = response.data.data.map(data => ({
           thumbnail: data.thumbnail,
           title: data.title,
           artist: {
             external_urls: {
-              spotify: data.artist.external_urls.spotify
+              spotify: data.artist?.external_urls?.spotify || null
             },
-            href: data.artist.href,
-            id: data.artist.id,
-            name: data.artist.name,
-            type: data.artist.type,
-            uri: data.artist.uri
+            href: data.artist?.href || null,
+            id: data.artist?.id || null,
+            name: data.artist?.name || null,
+            type: data.artist?.type || null,
+            uri: data.artist?.uri || null
           },
           duration: data.duration,
-          preview: data.preview
+          preview: data.preview || null
         }));
         return formattedData;
       } else {
-        throw new Error('API Error: Response data is invalid');
+        throw new Error('API Error: Response data is invalid or empty');
       }
     } catch (error) {
       console.error('Error:', error.message);
-      return 'Terjadi kesalahan saat memproses permintaan.';
+      return 'Terjadi kesalahan saat memproses permintaan ke API.';
     }
   }
 
@@ -38,10 +38,10 @@ module.exports = function(app) {
   app.get('/spotify', async (req, res) => {
     try {
       const search = req.query.search;
-    if (!search) {
-      return res.status(400).json({ error: 'Parameter "search" Tidak Ditemukan, Tolong Masukkan Nomor Surah' });
-    }
-      
+      if (!search) {
+        return res.status(400).json({ error: 'Parameter "search" tidak ditemukan. Tolong masukkan parameter pencarian.' });
+      }
+
       const response = await getDenisaResponse(search);
 
       if (typeof response === 'string') {
@@ -52,7 +52,8 @@ module.exports = function(app) {
         data: response
       });
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      console.error('Server Error:', error.message);
+      res.status(500).json({ error: 'Terjadi kesalahan di server.' });
     }
   });
 };
