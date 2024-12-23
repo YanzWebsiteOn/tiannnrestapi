@@ -35,7 +35,8 @@ module.exports = function (app) {
       }
 
       res.status(200).json({
-        status: true
+        status: 200,
+        creator: "Yanz",
         data: {
           fileName: response.fileName,
           downloadLink: response.downloadLink,
