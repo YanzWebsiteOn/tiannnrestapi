@@ -37,10 +37,10 @@ module.exports = function(app) {
   // Endpoint '/spotify'
   app.get('/spotify', async (req, res) => {
     try {
-      const { search } = req.query;
-      if (!query) {
-        return res.status(400).json({ error: 'Parameter "query" Tidak Ditemukan, Tolong Masukkan Perintah' });
-      }
+      cconst { search } = req.query; // Mengambil parameter pencarian dari query
+    if (!search) {
+      return res.status(400).json({ error: 'Parameter "search" tidak ditemukan, harap masukkan query pencarian.' });
+    }
 
       const response = await getDenisaResponse(query);
 
