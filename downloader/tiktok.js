@@ -38,7 +38,7 @@ module.exports = function(app) {
       }
 
   // Endpoint Tiktok Downloader
-  app.get('/tiktok', async (req, res) => {
+  app.get('/api/dl/tiktok', async (req, res) => {
     try {
       const { url } = req.query;
       if (!url) {
