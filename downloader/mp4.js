@@ -53,7 +53,7 @@ module.exports = function(app) {
   }
 
   // Endpoint untuk mengunduh MP4
-  app.get('/mp4', async (req, res) => {
+  app.get('/api/dl/mp4', async (req, res) => {
     const { url } = req.query; // Mengambil parameter URL dari query
     if (!url) {
       return res.status(400).json({ error: 'Parameter "url" tidak ditemukan, harap masukkan URL yang valid.' });
