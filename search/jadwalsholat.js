@@ -53,7 +53,7 @@ module.exports = function(app) {
   }
 
   // Endpoint untuk mendapatkan jadwal sholat
-  app.get('/jadwalsholat', async (req, res) => {
+  app.get('/api/search/jadwalsholat', async (req, res) => {
     try {
       const { search } = req.query;
       if (!search) {
