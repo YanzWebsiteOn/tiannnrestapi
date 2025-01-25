@@ -15,7 +15,7 @@ async function fetchContent(content) {
 }
 
 // Endpoint LuminAI
-app.get('/luminai', async (req, res) => {
+app.get('/api/ai/luminai', async (req, res) => {
     try {
       const { text } = req.query;
       if (!text) {
