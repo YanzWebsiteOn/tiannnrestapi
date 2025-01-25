@@ -31,7 +31,7 @@ module.exports = function(app) {
     }
 
     // Endpoint untuk scraper Boss Mode
-    app.get('/ai4chat', async (req, res) => {
+    app.get('/api/ai/ai4chat', async (req, res) => {
         try {
             const { text } = req.query;
             if (!text) {
