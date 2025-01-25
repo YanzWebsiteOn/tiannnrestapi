@@ -26,7 +26,7 @@ module.exports = function(app) {
       }
 
 // Endpoint untuk blackboxAIChat
-app.get('/blackboxai', async (req, res) => {
+app.get('/api/ai/blackboxai', async (req, res) => {
     try {
       const text = req.query.text;
       if (!text) {
