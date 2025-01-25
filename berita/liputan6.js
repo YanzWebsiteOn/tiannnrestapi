@@ -35,7 +35,7 @@ module.exports = function(app) {
   }
 
   // Endpoint untuk scraper liputan6
-  app.get('/liputan6', async (req, res) => {
+  app.get('/api/ai/liputan6', async (req, res) => {
     try {
       const data = await liputan6();
       if (data.length === 0) {
