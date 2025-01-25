@@ -14,7 +14,7 @@ async function ttp3(text) {
 }
 
   // Endpoint TeksToImage
-  app.get('/tekstoimg', async (req, res) => {
+  app.get('/api/tools/teks2img', async (req, res) => {
     try {
       const { text } = req.query;
       if (!text) {
