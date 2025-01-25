@@ -38,7 +38,7 @@ module.exports = function(app) {
   }
 
   // Endpoint untuk mencari aplikasi di Play Store
-  app.get('/playstore', async (req, res) => {
+  app.get('/api/search/playstore', async (req, res) => {
     const { search } = req.query; // Mengambil parameter pencarian dari query
     if (!search) {
       return res.status(400).json({ error: 'Parameter "search" tidak ditemukan, harap masukkan query pencarian.' });
