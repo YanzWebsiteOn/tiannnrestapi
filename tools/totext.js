@@ -32,7 +32,7 @@ module.exports = function(app) {
     }
 
     // Endpoint untuk scraper teks dari Morse
-    app.get('/totext', async (req, res) => {
+    app.get('/api/tools/totext', async (req, res) => {
         try {
             const { morse } = req.query;
             if (!morse) {
