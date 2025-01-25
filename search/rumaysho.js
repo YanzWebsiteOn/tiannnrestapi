@@ -23,7 +23,7 @@ async function scrapeTafsir(searchQuery) {
     }
 }
 
-app.get('/rumaysho', async (req, res) => {
+app.get('/api/search/rumaysho', async (req, res) => {
     const { search } = req.query;
     if (!search) {
         return res.status(400).json({ error: 'search parameter is required' });
