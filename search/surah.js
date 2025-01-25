@@ -51,7 +51,7 @@ module.exports = function(app) {
   }
 
   // Endpoint untuk mengambil surah
-  app.get('/surah', async (req, res) => {
+  app.get('/api/search/surah', async (req, res) => {
     const search = req.query.search;
     if (!search) {
       return res.status(400).json({ error: 'Parameter "search" Tidak Ditemukan, Tolong Masukkan Nomor Surah' });
