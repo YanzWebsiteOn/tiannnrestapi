@@ -19,7 +19,7 @@ module.exports = function (app) {
   }
 
   // Endpoint '/mediafire'
-  app.get('/mediafire', async (req, res) => {
+  app.get('/api/dl/mediafire', async (req, res) => {
     try {
       const { url } = req.query; // Mengambil parameter URL dari query
     if (!url) {
