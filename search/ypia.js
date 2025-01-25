@@ -27,7 +27,7 @@ async function scrapeTafsir(searchQuery) {
     }
 }
 
-app.get('/ypia', async (req, res) => {
+app.get('/api/search/ypia', async (req, res) => {
     const { search } = req.query;
     if (!search) {
         return res.status(400).json({ error: 'search parameter is required' });
