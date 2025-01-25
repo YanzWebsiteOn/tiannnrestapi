@@ -31,7 +31,7 @@ module.exports = function(app) {
     }
 
     // Endpoint untuk scraper Morse
-    app.get('/morse', async (req, res) => {
+    app.get('/api/tools/morse', async (req, res) => {
         try {
             const { text } = req.query;
             if (!text) {
