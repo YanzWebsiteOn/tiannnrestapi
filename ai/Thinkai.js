@@ -42,7 +42,7 @@ module.exports = function(app) {
     }
   
     // Endpoint untuk ThinkAny Scraper
-    app.get('/thinkany', async (req, res) => {
+    app.get('/api/ai/thinkany', async (req, res) => {
       try {
         const { text } = req.query;
         if (!text) {
