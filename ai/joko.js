@@ -19,7 +19,7 @@ module.exports = function (app) {
   }
 
   // Endpoint '/jokoai'
-  app.get('/jokoai', async (req, res) => {
+  app.get('/api/ai/jokoai', async (req, res) => {
     try {
       const { text } = req.query;
 
