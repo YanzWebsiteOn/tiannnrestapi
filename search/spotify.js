@@ -35,7 +35,7 @@ module.exports = function(app) {
   }
 
   // Endpoint '/spotify'
-  app.get('/spotify', async (req, res) => {
+  app.get('/api/search/spotify', async (req, res) => {
     try {
       const search = req.query.search;
       if (!search) {
