@@ -3,41 +3,25 @@ const axios = require('axios');
 module.exports = function(app) {
 
 async function tiktokStalk(username) {
-
   return new Promise(async (resolve, reject) => {
-
     try {
-
       let res = await fetch(
-
         "https://tools.revesery.com/stalktk/revesery.php?username=" +
-
           encodeURI(username.replace(/[^\w\d]/gi, ""))
-
       );
-
       if (!res.ok) return reject("User Not Found");
-
       res = await res.json();
-
       delete res.base64;
-
       console.log(res);
-
       resolve(res);
-
     } catch (e) {
-
       reject(e);
-
     }
-
   });
-
 }
 
 // Endpoint tiktokstalk
-  app.get('/ttstalk', async (req, res) => {
+  app.get('/api/tools/ttstalk', async (req, res) => {
     try {
       const { text } = req.query;
       if (!text) {
