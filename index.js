@@ -29,6 +29,7 @@ require('./maker/brat')(app);
 
 // Import Berita
 require('./berita/liputan6')(app);
+require('./berita/jkt48')(app);
 
 // Import Downloader 
 require('./downloader/tiktok')(app);
