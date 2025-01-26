@@ -24,6 +24,9 @@ require('./ai/Thinkai')(app);
 require('./ai/ChristyAi')(app);
 require('./ai/joko')(app);
 
+// Import Maker
+require('./maker/brat')(app);
+
 // Import Berita
 require('./berita/liputan6')(app);
 
