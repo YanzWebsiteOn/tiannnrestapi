@@ -3,7 +3,7 @@ const cheerio = require('cheerio');
 
 module.exports = function(app) {
 
-  // Full Kode Di Github Saya : https://github.com/Lenwyy/
+  // Full Kode Di Github Saya : https://github.com/YanzOffc/
 
   // Fungsi scraper liputan6
   async function liputan6() {
