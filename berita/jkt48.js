@@ -20,8 +20,8 @@ async function getInfoJktResponse() {
   }
 }
 
-// Endpoint '/api/jkt48-news'
-app.get('/api/jkt48', async (req, res) => {
+// Endpoint '/api/berita/jkt48'
+app.get('/api/berita/jkt48', async (req, res) => {
   try {
     // Mendapatkan data berita
     const newsData = await getInfoJktResponse();
