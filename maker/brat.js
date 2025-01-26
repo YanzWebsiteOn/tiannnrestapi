@@ -16,7 +16,7 @@ module.exports = function(app) {
   }
 
   // Endpoint untuk menampilkan gambar
-  app.get('/api/maker/bratimage', async (req, res) => {
+  app.get('/api/maker/brat', async (req, res) => {
     try {
       const { text } = req.query;
       if (!text) {
