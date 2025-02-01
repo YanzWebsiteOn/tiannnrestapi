@@ -51,6 +51,9 @@ require('./tools/totext')(app);
 require('./tools/ttstalk')(app);
 require('./tools/tekstoimg')(app);
 
+// Improt Games
+require('./games/tekateki')
+
 // Full Kode Di Github Saya : https://github.com/YanzOffc/
 
 // Endpoint untuk halaman HTML utama
