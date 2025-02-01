@@ -15,7 +15,7 @@ module.exports = function (app) {
     }
   }
 
-  // Endpoint untuk berita JKT48 dari API asli
+  // Endpoint untuk Games Tebak Lirik
   app.get('/api/games/tebaklirik', async (req, res) => {
     try {
       const data = await fetchtebakLirik();
