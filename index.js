@@ -35,6 +35,10 @@ require('./berita/jkt48')(app);
 require('./downloader/tiktok')(app);
 require('./downloader/mp4')(app);
 require('./downloader/mediafire')(app);
+require('./downloader/igdl')(app);
+require('./downloader/capcut')(app);
+require('./downloader/facebook')(app);
+require('./downloader/musicapple')(app);
 
 // Import Search
 require('./search/goodread')(app);
