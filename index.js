@@ -52,7 +52,8 @@ require('./tools/ttstalk')(app);
 require('./tools/tekstoimg')(app);
 
 // Improt Games
-require('./games/tekateki')
+require('./games/tekateki')(app);
+require('./games/tebaklirik')(app);
 
 // Full Kode Di Github Saya : https://github.com/YanzOffc/
 
