@@ -33,7 +33,7 @@ require('./berita/jkt48')(app);
 
 // Import Downloader 
 require('./downloader/tiktok')(app);
-require('./downloader/mp4')(app);
+require('./downloader/ytmp4')(app);
 require('./downloader/mediafire')(app);
 require('./downloader/igdl')(app);
 require('./downloader/capcut')(app);
