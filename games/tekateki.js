@@ -19,15 +19,16 @@ module.exports = function (app) {
   app.get('/api/games/tekateki', async (req, res) => {
     try {
       const data = await fetchTekaTekiNjir();
-      if (!data) {
-        return res.status(500).json({ error: 'Tidak dapat mengambil data teka teki.' });
+      if (!data || !data.data) {
+        return res.status(500).json({ status: false, error: 'Tidak dapat mengambil data teka teki.' });
       }
 
       res.status(200).json({
-          data
+        status: true,
+        data: data.data
       });
     } catch (error) {
-      res.status(500).json({ error: 'Terjadi kesalahan saat mengambil data.' });
+      res.status(500).json({ status: false, error: 'Terjadi kesalahan saat mengambil data.' });
     }
   });
 };
