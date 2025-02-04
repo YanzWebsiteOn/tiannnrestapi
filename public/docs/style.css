@@ -16,6 +16,23 @@ header {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
+#search-input {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #3d3d5c;
+    background-color: #2a2a3e;
+    color: #fff;
+    width: 250px;
+    transition: border-color 0.3s ease;
+}
+
+#search-input:focus {
+    border-color: #ff6b6b;
+    outline: none;
+}
+
+
 header h1 {
     margin: 0;
     font-size: 1.5rem;
