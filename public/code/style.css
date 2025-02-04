@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Fira+Code&display=swap');
+
+:root {
+    --background-color: #0A0F1E;
+    --card-background: rgba(20, 25, 40, 0.8);
+    --text-color: #E6EDF3;
+    --primary-color: #00BFFF;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --code-bg: rgba(30, 30, 30, 0.85);
+    --glass-blur: blur(10px);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    padding: 20px;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.header h1 {
+    font-size: 2.2em;
+    color: var(--primary-color);
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(0, 191, 255, 0.8);
+}
+
+.card {
+    background: var(--card-background);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 191, 255, 0.5);
+}
+
+/* Style Link pada Judul */
+.card h2 a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+}
+
+.card h2 a:hover {
+    color: #ffffff;
+    text-shadow: 0 0 8px var(--primary-color);
+    text-decoration: underline;
+}
+
+.code-box {
+    position: relative;
+    background-color: var(--code-bg);
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 0.95em;
+    overflow-x: auto;
+    border-left: 5px solid var(--primary-color);
+    font-family: 'Fira Code', monospace;
+    box-shadow: inset 0 0 10px rgba(0, 191, 255, 0.3);
+    transition: background 0.3s ease;
+}
+
+.code-box:hover {
+    background-color: rgba(50, 50, 50, 0.9);
+}
+
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: #E0E0E0;
+}
+
+.copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    color: var(--primary-color);
+    transition: transform 0.2s ease-in-out, opacity 0.3s ease;
+}
+
+.copy-btn:hover {
+    transform: scale(1.2);
+    opacity: 0.8;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    font-size: 0.9em;
+    border-top: 2px solid var(--primary-color);
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Styling untuk kotak pencarian */
+#searchInput {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    margin: 20px auto;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: rgba(30, 30, 30, 0.8);
+    color: var(--text-color);
+    font-size: 1em;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#searchInput:focus {
+    outline: none;
+    background-color: rgba(50, 50, 50, 0.9);
+    border-color: var(--primary-color);
+}
+
+#searchInput::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Styling untuk menampilkan hasil pencarian */
+#searchTerms {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    background: rgba(20, 25, 40, 0.8);
+    box-shadow: 0 4px 10px rgba(0, 191, 255, 0.2);
+}
+
+#searchTerms h3 {
+    font-size: 1.2em;
+    color: var(--primary-color);
+}
+
+#searchTerms ul {
+    list-style-type: none;
+}
+
+#searchTerms ul li {
+    color: var(--text-color);
+    font-size: 1em;
+    margin: 5px 0;
+}
+
+#searchTerms ul li:hover {
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+    #searchInput {
+        width: 100%;
+        max-width: 90%;
+    }
+
+    #searchTerms h3 {
+        font-size: 1.1em;
+    }
+
+    .card {
+        padding: 15px;
+    }
+}
