@@ -53,6 +53,21 @@ header h1 {
     background-color: #ff4a4a;
 }
 
+.code-case-btn {
+    background-color: #6bdaff;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.code-case-btn:hover {
+    background-color: #4a68ff;
+}
+
 .container {
     max-width: 1200px;
     margin: 2rem auto;
