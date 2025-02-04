@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Emplementasi Api Zhizi Botz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Rest Api Zhizi ✨</h1>
+            <p>Contoh Implementasi Code Response Api Zhizi</p>
+            <input type="text" id="searchInput" placeholder="Cari...">
+        </div>
+
+        <div id="noResults" style="display: none;">Code tidak ada</div> <!-- Pesan ketika tidak ada hasil -->
+
+        <div class="card" id="ai4chat-card">
+            <h2>
+                <a href="/api/ai/ai4chat" target="_blank">
+                    Ai4Chat
+                </a>
+            </h2>
+            <div class="code-box">
+                <button class="copy-btn" onclick="copyCode(this)">📋</button>
+                <pre>
+                    <code>
+case "ai4chat": {
+    if (!text) return m.reply(`Example : ${prefix}${command} halo`)
+    try {
+        const Ai4Chat = await fetchJson(`https://restapi.yanzoffc.xyz/api/ai/ai4chat?text=${encodeURIComponent(text)}`)
+    if (!Ai4Chat || !Ai4Chat.data) return m.reply(`Terjadi kesalahan, data tidak ditemukan.`)
+        await m.reply("*Ai4Chat*\n\n" + Ai4Chat.data)
+    } catch (error) {
+        console.log(error)
+        m.reply(`Terjadi Kesalahan` + error)
+    }
+}
+break
+</code>
+</pre>
+            </div>
+        </div>
+
+        <div class="card" id="aianswer-card">
+            <h2>
+                <a href="/api/ai/aianswer" target="_blank">
+                    Ai Answer
+                </a>
+            </h2>
+            <div class="code-box">
+                <button class="copy-btn" onclick="copyCode(this)">📋</button>
+                <pre>
+                    <code>
+case "aianswer": {
+    if (!text) return m.reply(`Example : ${prefix}${command} siapakah presiden indo saat ini?`)
+    try {
+        const AiAnswer = await fetchJson(`https://restapi.yanzoffc.xyz/api/ai/aianswer?text=${encodeURIComponent(text)}`)
+    if (!AiAnswer || !AiAnswer.data || !AiAnswer.data.answer) {
+            return m.reply(`Terjadi kesalahan, data tidak ditemukan.`);
+    }
+        await m.reply("*Ai Answer*\n\n" + AiAnswer.data.answer)
+    } catch (error) {
+        console.log(error)
+        m.reply(`Terjadi Kesalahan` + error)
+    }
+}
+break
+</code>
+</pre>
+            </div>
+        </div>
+
+        <div class="card" id="luminai-card">
+            <h2>
+                <a href="/api/ai/luminai" target="_blank">
+                    Lumin Ai
+                </a>
+            </h2>
+            <div class="code-box">
+                <button class="copy-btn" onclick="copyCode(this)">📋</button>
+                <pre>
+                    <code>
+case "luminai": {
+    if (!text) return m.reply(`Example : ${prefix}${command} haii`)
+    try {
+        const Lumin = await fetchJson(`https://restapi.yanzoffc.xyz/api/ai/luminai?text=${encodeURIComponent(text)}`)
+    if (!Lumin || !Lumin.data || !Lumin.data.result) return m.reply(`Terjadi kesalahan, data tidak ditemukan.`)
+        await m.reply("*Lumin Ai*\n\n" + Lumin.data.result)
+    } catch (error) {
+        console.log(error)
+        m.reply(`Terjadi Kesalahan` + error)
+    }
+}
+break
+</code>
+</pre>
+            </div>
+        </div>
+
+        <div class="card" id="zhiziai-card">
+            <h2>
+                <a href="/api/ai/zhiziai" target="_blank">
+                    Zhizi Ai
+                </a>
+            </h2>
+            <div class="code-box">
+                <button class="copy-btn" onclick="copyCode(this)">📋</button>
+                <pre>
+                    <code>
+case "zhiziai": {
+    if (!text) return m.reply(`Example : ${prefix}${command} haii`)
+    try {
+        const Zhizi = await fetchJson(`https://restapi.yanzoffc.xyz/api/ai/zhiziai?text=${encodeURIComponent(text)}`)
+    if (!Zhizi || !Zhizi.data || !Zhizi.data.data) {
+        return m.reply(`Terjadi kesalahan, data tidak ditemukan.`)
+    }
+        await m.reply("*Zhizi Ai*\n\n" + Zhizi.data.data)
+    } catch (error) {
+        console.log(error)
+        m.reply(`Terjadi kesalahan: ${error.message || error}`)
+    }
+}
+break                        
+</code>
+</pre>
+            </div>
+        </div>
+
+        <div class="card" id="jokoai-card">
+            <h2>
+                <a href="/api/ai/jokoai" target="_blank">
+                    Joko Ai
+                </a>
+            </h2>
+            <div class="code-box">
+                <button class="copy-btn" onclick="copyCode(this)">📋</button>
+                <pre>
+                    <code>
+case "jokoai": {
+    if (!text) return m.reply(`Example : ${prefix}${command} haii`)
+    try {
+        const Joko = await fetchJson(`https://restapi.yanzoffc.xyz/api/ai/jokoai?text=${encodeURIComponent(text)}`)
+    if (!Joko || !Joko.data) {
+        return m.reply(`Terjadi kesalahan, data tidak ditemukan.`)
+    }
+        await m.reply("*Joko Ai*\n\n" + Joko.data)
+    } catch (error) {
+        console.log(error)
+        m.reply(`Terjadi kesalahan: ${error.message || error}`)
+    }
+}
+break
+                    </code>
+                </pre>
+            </div>
+        </div>
+
+        <div class="card" id="tiktokdl-card">
+            <h2>
+                <a href="/api/dl/tiktok" target="_blank">
+                    TikTok Downloader
+                </a>
+            </h2>
+            <div class="code-box">
+                <button class="copy-btn" onclick="copyCode(this)">📋</button>
+                <pre>
+                    <code>
+case "tiktok": {
+    if (!text) return m.reply(`Example : ${prefix}${command} [ url vidio tiktok nya ]`)
+    try {
+        const TikTokDl = await fetchJson(`https://restapi.yanzoffc.xyz/api/dl/tiktok?url=${encodeURIComponent(text)}`)
+    if (!TikTokDl || !TikTokDl.data) {
+        return m.reply(`Terjadi kesalahan, data tidak ditemukan.`)
+    } 
+
+        const title = TikTokDl.data.title;
+        const videoUrl = TikTokDl.data.no_watermark;
+        const audioUrl = TikTokDl.data.music;
+        const videoCover = TikTokDl.data.cover;
+
+    await bot.sendMessage(m.chat, {
+        video: { url: videoUrl },
+        caption: `*[ TikTok Video ]*\n\n${title}`,
+        thumbnail: { url: videoCover },
+    });
+        
+    await bot.sendMessage(m.chat, {
+        audio: { url: audioUrl },
+        caption: "Audio TikTok",
+    });
+    } catch (error) {
+        console.log(error)
+        m.reply(`Terjadi kesalahan: ${error.message || error}`)
+    }
+}
+break
+                    </code>
+                </pre>
+            </div>
+        </div>
+
+        <footer>
+            &copy; 2025 API WhatsApp Bot - Created By ArixOfficial
+        </footer>
+    </div>
+
+    <script>
+        function copyCode(button) {
+            let codeBox = button.nextElementSibling.innerText.trim();
+            navigator.clipboard.writeText(codeBox).then(() => {
+                button.innerText = "✅";
+                setTimeout(() => {
+                    button.innerText = "📋";
+                }, 1500);
+            });
+        }
+
+        function getSearchParam() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('search');
+        }
+
+        function searchContent(searchTerm) {
+            const cards = document.querySelectorAll('.card');
+            let found = false;
+
+            cards.forEach(card => {
+                const title = card.querySelector('h2').textContent.toLowerCase();
+                if (title.includes(searchTerm.toLowerCase())) {
+                    card.style.display = 'block';
+                    found = true;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            const noResults = document.getElementById('noResults');
+            if (found) {
+                noResults.style.display = 'none';
+            } else {
+                noResults.style.display = 'block';
+            }
+        }
+
+        const searchTerm = getSearchParam();
+        if (searchTerm) {
+            searchContent(searchTerm);
+            document.getElementById('searchInput').value = searchTerm;
+        }
+
+        document.getElementById('searchInput').addEventListener('input', function () {
+            const searchTerm = this.value;
+            searchContent(searchTerm);
+            const newUrl = window.location.pathname + '?search=' + encodeURIComponent(searchTerm);
+            history.pushState(null, '', newUrl);
+        });
+    </script>
+
+</body>
+
+</html>
