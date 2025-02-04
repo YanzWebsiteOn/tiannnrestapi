@@ -19,7 +19,6 @@ require('./ai/ai4chat')(app);
 require('./ai/Aianswer')(app);
 require('./ai/LuminAI')(app);
 require('./ai/zhiziai')(app);
-require('./ai/Thinkai')(app);
 require('./ai/ChristyAi')(app);
 require('./ai/joko')(app);
 
