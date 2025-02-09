@@ -5,7 +5,7 @@ module.exports = function(app) {
   // Fungsi untuk mengambil gambar dari API
   async function getBratImage(text) {
     try {
-      const url = `https://api.siputzx.my.id/api/m/brat?text=${encodeURIComponent(text)}`;
+      const url = `https://brat.caliphdev.com/api/brat?text=${encodeURIComponent(text)}`;
       const response = await axios.get(url, { responseType: 'arraybuffer' });  // Mendapatkan gambar dalam bentuk arraybuffer
 
       return response.data;
