@@ -1,21 +1,19 @@
 const axios = require('axios');
-const sharp = require('sharp');
 
 module.exports = function(app) {
 
   // Fungsi untuk mengambil gambar dari API
-async function getBratImage(text) {
-  try {
-    const url = `https://brat.caliphdev.com/api/brat?text=${encodeURIComponent(text)}`;
-    const response = await axios.get(url, { responseType: 'arraybuffer' });
+  async function getBratImage(text) {
+    try {
+      const url = `https://brat.caliphdev.com/api/brat?text=${encodeURIComponent(text)}`;
+      const response = await axios.get(url, { responseType: 'arraybuffer' });  // Mendapatkan gambar dalam bentuk arraybuffer
 
-    // Convert buffer ke format PNG dengan resolusi lebih besar (jika perlu)
-    return await sharp(response.data).resize(1000).toBuffer();  
-  } catch (error) {
-    console.error('Error:', error.message);
-    throw new Error('Terjadi kesalahan saat memproses permintaan.');
+      return response.data;
+    } catch (error) {
+      console.error('Error:', error.message);
+      throw new Error('Terjadi kesalahan saat memproses permintaan.');
+    }
   }
-}
 
   // Endpoint untuk menampilkan gambar
   app.get('/api/maker/brat', async (req, res) => {
