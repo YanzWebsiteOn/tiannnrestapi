@@ -86,7 +86,7 @@ module.exports = function (app) {
 
       res.status(200).json({
         status: 200,
-        creator: 'Yanz',
+        creator: 'Arix',
         data: jokoResponse,
       });
     } catch (error) {
