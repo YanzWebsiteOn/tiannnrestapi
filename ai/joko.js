@@ -3,7 +3,7 @@ const axios = require('axios');
 const limits = new Map(); // Menyimpan jumlah request per API Key
 
 const API_KEYS = {
-  apikey: { key: "freekey", limit: 2, unlimited: false },
+  apikey: { key: "freekey", limit: 5, unlimited: false },
   bakajsa: { key: "bakajsa", limit: Infinity, unlimited: true },
 };
 
