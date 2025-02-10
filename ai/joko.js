@@ -1,17 +1,30 @@
 const axios = require('axios');
+const { API_KEYS, RESET_TIME, TIMEZONE } = require('../settings');
+const moment = require('moment-timezone');
 
 const limits = new Map(); // Menyimpan jumlah request per API Key
 
-const API_KEYS = {
-  apikey: { key: "freekey", limit: 5, unlimited: false },
-  bakajsa: { key: "bakajsa", limit: Infinity, unlimited: true },
-};
+// Fungsi untuk reset limit setiap hari pada pukul 00:00 WIB
+function scheduleReset() {
+  const now = moment().tz(TIMEZONE);
+  const resetTime = moment.tz(`${now.format('YYYY-MM-DD')} ${RESET_TIME}`, "YYYY-MM-DD HH:mm", TIMEZONE);
+  
+  // Jika waktu reset sudah lewat, jadwalkan untuk besok
+  if (now.isAfter(resetTime)) {
+    resetTime.add(1, 'day');
+  }
 
-// Reset limit setiap 1 jam untuk apikey
-setInterval(() => {
-  limits.clear();
-  console.log("Request limit telah direset!");
-}, 60 * 60 * 1000); // 1 jam
+  const timeUntilReset = resetTime.diff(now);
+  
+  setTimeout(() => {
+    limits.clear();
+    console.log("Request limit telah direset!");
+    scheduleReset(); // Jadwalkan ulang untuk hari berikutnya
+  }, timeUntilReset);
+}
+
+// Jalankan fungsi reset saat server dimulai
+scheduleReset();
 
 module.exports = function (app) {
   async function getJokoResponse(text) {
@@ -52,7 +65,7 @@ module.exports = function (app) {
         if (limits.get(apikey) >= userKey.limit) {
           return res.status(429).json({
             status: 429,
-            error: 'Limit request telah habis! Silakan coba lagi nanti.',
+            error: 'Limit request telah habis! Silakan coba lagi besok.',
           });
         }
 
@@ -74,8 +87,6 @@ module.exports = function (app) {
       res.status(200).json({
         status: 200,
         creator: 'Yanz',
-        request_count: userKey.unlimited ? "Unlimited" : limits.get(apikey),
-        limit_per_hour: userKey.unlimited ? "Unlimited" : userKey.limit,
         data: jokoResponse,
       });
     } catch (error) {
