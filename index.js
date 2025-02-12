@@ -24,6 +24,7 @@ require('./ai/joko')(app);
 
 // Import Maker
 require('./maker/brat')(app);
+require('./maker/cpanel')(app);
 
 // Import Berita
 require('./berita/liputan6')(app);
