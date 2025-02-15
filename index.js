@@ -21,6 +21,7 @@ require('./ai/LuminAI')(app);
 require('./ai/zhiziai')(app);
 require('./ai/ChristyAi')(app);
 require('./ai/joko')(app);
+require('./ai/simi')(app);
 
 // Import Maker
 require('./maker/brat')(app);
