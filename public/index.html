@@ -1,155 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zhizi Api's || Home</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <style>
-    @keyframes neonGlow {
-      0%, 100% { text-shadow: 0 0 5px #3b82f6, 0 0 10px #3b82f6, 0 0 20px #3b82f6, 0 0 40px #3b82f6; }
-      50% { text-shadow: 0 0 10px #8b5cf6, 0 0 20px #8b5cf6, 0 0 40px #8b5cf6, 0 0 80px #8b5cf6; }
-    }
-    .animate-neon { animation: neonGlow 2s infinite alternate; }
-    .glassmorphism {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    .hologram-effect {
-      background: linear-gradient(145deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
-      box-shadow: 0 0 20px rgba(59, 130, 246, 0.5), 0 0 40px rgba(139, 92, 246, 0.5);
-    }
-    .gradient-bg {
-      background: linear-gradient(145deg, #1e3a8a, #4c1d95);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zhizi Api's || Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        @keyframes neonGlow {
+
+            0%,
+            100% {
+                text-shadow: 0 0 5px #3b82f6, 0 0 10px #3b82f6, 0 0 20px #3b82f6, 0 0 40px #3b82f6;
+            }
+
+            50% {
+                text-shadow: 0 0 10px #8b5cf6, 0 0 20px #8b5cf6, 0 0 40px #8b5cf6, 0 0 80px #8b5cf6;
+            }
+        }
+
+        .animate-neon {
+            animation: neonGlow 2s infinite alternate;
+        }
+
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hologram-effect {
+            background: linear-gradient(145deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5), 0 0 40px rgba(139, 92, 246, 0.5);
+        }
+
+        .gradient-bg {
+            background: linear-gradient(145deg, #1e3a8a, #4c1d95);
+        }
+
+        /* Animasi slide-down */
+        #mobile-menu {
+            transform: translateY(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #mobile-menu.open {
+            transform: translateY(0);
+        }
+    </style>
 </head>
+
 <body class="bg-gray-900 text-white font-sans overflow-x-hidden">
-  <!-- Navbar -->
-  <nav class="glassmorphism p-4 fixed w-full z-50">
-    <div class="container mx-auto flex justify-between items-center">
-      <div class="text-2xl font-bold animate-neon">
-        <span class="text-blue-400">ZHIZI</span><span class="text-purple-400"> API</span>
-      </div>
-      <div class="flex space-x-6">
-        <a href="#features" class="hover:text-blue-400 transition duration-300">Features</a>
-        <a href="/docs" class="hover:text-purple-400 transition duration-300">Docs</a>
-        <a href="#pricing" class="hover:text-blue-400 transition duration-300">Pricing</a>
-        <a href="/contact" class="hover:text-purple-400 transition duration-300">Contact</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <section class="min-h-screen flex items-center justify-center relative overflow-hidden">
-    <div class="container mx-auto text-center px-4" data-aos="fade-up" data-aos-duration="1000">
-      <h1 class="text-6xl font-bold mb-4 animate-neon">
-        <span class="text-blue-400">Welcome</span> <span class="text-purple-400">To Zhizi Api</span>
-      </h1>
-      <p class="text-xl text-gray-300 mb-8">Platform terpercaya yang menyediakan solusi API modern untuk berbagai kebutuhan digital Anda. Dari Games, downloader, AI chat & image, hingga integrasi searcher, kami menawarkan keandalan, fleksibilitas, dan kemudahan. Dengan teknologi canggih dan dukungan optimal, kami siap mendukung transformasi digital Anda.</p>
-      <a href="/docs" class="bg-blue-500 hover:bg-blue-600 text-white py-3 px-8 rounded-lg text-lg font-semibold transition duration-300 shadow-lg hover:shadow-xl">
-        Coba Sekarang
-      </a>
-    </div>
-    <!-- Floating Holographic Elements -->
-    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-      <div class="w-64 h-64 bg-blue-500/20 rounded-full blur-3xl animate-float"></div>
-      <div class="w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-float animation-delay-2000"></div>
-    </div>
-  </section>
-
-  <!-- Features Section -->
-  <section id="features" class="py-20 gradient-bg">
-    <div class="container mx-auto px-4">
-      <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-up" data-aos-duration="1000">Features</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="glassmorphism p-8 rounded-lg hover:hologram-effect transition duration-500" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-          <h3 class="text-2xl font-bold text-blue-400 mb-4">Ai</h3>
-          <p class="text-gray-300">✔ Zhizi Ai.</p>
-          <p class="text-gray-300">✔ Lumin Ai.</p>
-          <p class="text-gray-300">✔ Ai4 Chat.</p>
-          <p class="text-gray-300">✔ Dan lain-lain</p>
-          <div class="mt-4">
-            <div class="w-full h-2 bg-gray-700 rounded-full">
-              <div class="h-2 bg-blue-400 rounded-full w-3/4"></div>
+    <!-- Navbar -->
+    <nav class="glassmorphism p-4 fixed w-full z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold animate-neon">
+                <span class="text-blue-400">ZHIZI</span><span class="text-purple-400"> API</span>
             </div>
-          </div>
+            <!-- Menu Desktop (Muncul di layar md ke atas) -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#features" class="hover:text-blue-400 transition duration-300">Features</a>
+                <a href="/docs" class="hover:text-purple-400 transition duration-300">Docs</a>
+                <a href="#pricing" class="hover:text-blue-400 transition duration-300">Pricing</a>
+                <a href="/contact" class="hover:text-purple-400 transition duration-300">Contact</a>
+            </div>
+            <button class="md:hidden text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
         </div>
-        <div class="glassmorphism p-8 rounded-lg hover:hologram-effect transition duration-500" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-          <h3 class="text-2xl font-bold text-purple-400 mb-4">Downloader</h3>
-          <p class="text-gray-300">✔ Tiktok.</p>
-          <p class="text-gray-300">✔ Youtube Mp4.</p>
-          <p class="text-gray-300">✔ Mediafire.</p>
-          <p class="text-gray-300">✔ Instagram Downloader.</p>
-          <p class="text-gray-300">✔ Dan lain-lain.</p>
-          <div class="mt-4">
-            <div class="w-full h-2 bg-gray-700 rounded-full">
-              <div class="h-2 bg-purple-400 rounded-full w-4/5"></div>
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-16 left-0 w-full bg-gray-800 shadow-lg">
+            <div class="flex flex-col space-y-4 p-4">
+                <a href="#features" class="hover:text-blue-400 transition duration-300">Features</a>
+                <a href="/docs" class="hover:text-purple-400 transition duration-300">Docs</a>
+                <a href="#pricing" class="hover:text-blue-400 transition duration-300">Pricing</a>
+                <a href="/contact" class="hover:text-purple-400 transition duration-300">Contact</a>
             </div>
-          </div>
         </div>
-        <div class="glassmorphism p-8 rounded-lg hover:hologram-effect transition duration-500" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
-          <h3 class="text-2xl font-bold text-blue-400 mb-4">Tools</h3>
-          <p class="text-gray-300">✔ Morse To Text.</p>
-          <p class="text-gray-300">✔ Text To Morse.</p>
-          <p class="text-gray-300">✔ Tktok Stalk.</p>
-          <p class="text-gray-300">✔ Dan lain-lain.</p>
-          <div class="mt-4">
-            <div class="w-full h-2 bg-gray-700 rounded-full">
-              <div class="h-2 bg-blue-400 rounded-full w-5/6"></div>
-            </div>
-          </div>
-        </div>
-        <div class="glassmorphism p-8 rounded-lg hover:hologram-effect transition duration-500" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-            <h3 class="text-2xl font-bold text-purple-400 mb-4">Search</h3>
-            <p class="text-gray-300">✔ Cari Buku.</p>
-            <p class="text-gray-300">✔ Jadwal Sholat.</p>
-            <p class="text-gray-300">✔ Play Store.</p>
-            <p class="text-gray-300">✔ Spotify.</p>
-            <p class="text-gray-300">✔ Dan lain-lain.</p>
-            <div class="mt-4">
-              <div class="w-full h-2 bg-gray-700 rounded-full">
-                <div class="h-2 bg-purple-400 rounded-full w-4/5"></div>
-              </div>
-            </div>
-          </div>
-          <div class="glassmorphism p-8 rounded-lg hover:hologram-effect transition duration-500" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
-            <h3 class="text-2xl font-bold text-blue-400 mb-4">Games</h3>
-            <p class="text-gray-300">✔ Tebak Lirik.</p>
-            <p class="text-gray-300">✔ Teka Teki.</p>
-            <p class="text-gray-300">✔ Dan lain-lain.</p>
-            <div class="mt-4">
-              <div class="w-full h-2 bg-gray-700 rounded-full">
-                <div class="h-2 bg-blue-400 rounded-full w-5/6"></div>
-              </div>
-            </div>
-          </div>
-          <div class="glassmorphism p-8 rounded-lg hover:hologram-effect transition duration-500" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-            <h3 class="text-2xl font-bold text-purple-400 mb-4">20+ Fitur Lainnya</h3>
-            <p class="text-gray-300">✔ Tanpa Login.</p>
-            <p class="text-gray-300">✔ No Limit Request.</p>
-            <p class="text-gray-300">✔ Simple.</p>
-            <div class="mt-4">
-              <div class="w-full h-2 bg-gray-700 rounded-full">
-                <div class="h-2 bg-purple-400 rounded-full w-4/5"></div>
-              </div>
-            </div>
-          </div>
-      </div>
-    </div>
-  </section>
+    </nav>
 
-  <!-- Documentation Section -->
-  <section id="docs" class="py-20 bg-gray-800">
-    <div class="container mx-auto px-4">
-      <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-up" data-aos-duration="1000">Documentation</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="glassmorphism p-8 rounded-lg" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-          <h3 class="text-2xl font-bold text-purple-400 mb-4">Contoh Kode</h3>
-          <p class="text-gray-300 mb-4">Contoh Emplementasi Kode nya.</p>
-          <pre class="bg-gray-700 p-4 rounded-lg text-sm text-blue-300"><code>
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="container mx-auto text-center px-4" data-aos="fade-up" data-aos-duration="1000">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-neon">
+                <span class="text-blue-400">Welcome</span> <span class="text-purple-400">To Zhizi Api</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 mb-8">Platform terpercaya yang menyediakan solusi API modern
+                untuk berbagai kebutuhan digital Anda. Dari Games, downloader, AI chat & image, hingga integrasi
+                searcher, kami menawarkan keandalan, fleksibilitas, dan kemudahan. Dengan teknologi canggih dan dukungan
+                optimal, kami siap mendukung transformasi digital Anda.</p>
+            <a href="/docs"
+                class="bg-blue-500 hover:bg-blue-600 text-white py-3 px-8 rounded-lg text-lg font-semibold transition duration-300 shadow-lg hover:shadow-xl">
+                Coba Sekarang
+            </a>
+        </div>
+        <!-- Floating Holographic Elements -->
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div class="w-64 h-64 bg-blue-500/20 rounded-full blur-3xl animate-float"></div>
+            <div class="w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-float animation-delay-2000"></div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 gradient-bg">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-up" data-aos-duration="1000">Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glassmorphism p-8 rounded-lg hover:hologram-effect transition duration-500"
+                    data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <h3 class="text-2xl font-bold text-blue-400 mb-4">Ai</h3>
+                    <p class="text-gray-300">✔ Zhizi Ai.</p>
+                    <p class="text-gray-300">✔ Lumin Ai.</p>
+                    <p class="text-gray-300">✔ Ai4 Chat.</p>
+                    <p class="text-gray-300">✔ Dan lain-lain</p>
+                    <div class="mt-4">
+                        <div class="w-full h-2 bg-gray-700 rounded-full">
+                            <div class="h-2 bg-blue-400 rounded-full w-3/4"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="glassmorphism p-8 rounded-lg hover:hologram-effect transition duration-500"
+                    data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                    <h3 class="text-2xl font-bold text-purple-400 mb-4">Downloader</h3>
+                    <p class="text-gray-300">✔ Tiktok.</p>
+                    <p class="text-gray-300">✔ Youtube Mp4.</p>
+                    <p class="text-gray-300">✔ Mediafire.</p>
+                    <p class="text-gray-300">✔ Instagram Downloader.</p>
+                    <p class="text-gray-300">✔ Dan lain-lain.</p>
+                    <div class="mt-4">
+                        <div class="w-full h-2 bg-gray-700 rounded-full">
+                            <div class="h-2 bg-purple-400 rounded-full w-4/5"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="glassmorphism p-8 rounded-lg hover:hologram-effect transition duration-500"
+                    data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+                    <h3 class="text-2xl font-bold text-blue-400 mb-4">Tools</h3>
+                    <p class="text-gray-300">✔ Morse To Text.</p>
+                    <p class="text-gray-300">✔ Text To Morse.</p>
+                    <p class="text-gray-300">✔ Tktok Stalk.</p>
+                    <p class="text-gray-300">✔ Dan lain-lain.</p>
+                    <div class="mt-4">
+                        <div class="w-full h-2 bg-gray-700 rounded-full">
+                            <div class="h-2 bg-blue-400 rounded-full w-5/6"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="glassmorphism p-8 rounded-lg hover:hologram-effect transition duration-500"
+                    data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                    <h3 class="text-2xl font-bold text-purple-400 mb-4">Search</h3>
+                    <p class="text-gray-300">✔ Cari Buku.</p>
+                    <p class="text-gray-300">✔ Jadwal Sholat.</p>
+                    <p class="text-gray-300">✔ Play Store.</p>
+                    <p class="text-gray-300">✔ Spotify.</p>
+                    <p class="text-gray-300">✔ Dan lain-lain.</p>
+                    <div class="mt-4">
+                        <div class="w-full h-2 bg-gray-700 rounded-full">
+                            <div class="h-2 bg-purple-400 rounded-full w-4/5"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="glassmorphism p-8 rounded-lg hover:hologram-effect transition duration-500"
+                    data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+                    <h3 class="text-2xl font-bold text-blue-400 mb-4">Games</h3>
+                    <p class="text-gray-300">✔ Tebak Lirik.</p>
+                    <p class="text-gray-300">✔ Teka Teki.</p>
+                    <p class="text-gray-300">✔ Dan lain-lain.</p>
+                    <div class="mt-4">
+                        <div class="w-full h-2 bg-gray-700 rounded-full">
+                            <div class="h-2 bg-blue-400 rounded-full w-5/6"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="glassmorphism p-8 rounded-lg hover:hologram-effect transition duration-500"
+                    data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                    <h3 class="text-2xl font-bold text-purple-400 mb-4">20+ Fitur Lainnya</h3>
+                    <p class="text-gray-300">✔ Tanpa Login.</p>
+                    <p class="text-gray-300">✔ No Limit Request.</p>
+                    <p class="text-gray-300">✔ Simple.</p>
+                    <div class="mt-4">
+                        <div class="w-full h-2 bg-gray-700 rounded-full">
+                            <div class="h-2 bg-purple-400 rounded-full w-4/5"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documentation Section -->
+    <section id="docs" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-up" data-aos-duration="1000">Documentation
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="glassmorphism p-8 rounded-lg" data-aos="fade-up" data-aos-duration="1000"
+                    data-aos-delay="200">
+                    <h3 class="text-2xl font-bold text-purple-400 mb-4">Contoh Kode</h3>
+                    <p class="text-gray-300 mb-4">Contoh Emplementasi Kode nya.</p>
+                    <pre class="bg-gray-700 p-4 rounded-lg text-sm text-blue-300"><code>
 async function main() {
 let params = {
 text: teks
@@ -165,84 +219,118 @@ console.error(err.response?.data?.error || err.message);
 });
 }
 main();</code></pre>
+                </div>
+                <div class="glassmorphism p-8 rounded-lg" data-aos="fade-up" data-aos-duration="1000"
+                    data-aos-delay="400">
+                    <h3 class="text-2xl font-bold text-blue-400 mb-4">Tetang kami</h3>
+                    <p class="text-gray-300 mb-4">Arix Official Adalah Seorang Programer Pemula Kelas 1 SMP Yang Ingin
+                        Menempuh Pendikan Jurusan IT, Dan Menjadi Seorang Web Development & Script Development, Dan Bisa
+                        Membanggakan Orang Lain Dengan Berbagai project :></p>
+                    <a href="https://t.me/ArixOffc"
+                        class="text-purple-400 hover:text-purple-300 transition duration-300">Hubungi Kami →</a>
+                </div>
+            </div>
         </div>
-        <div class="glassmorphism p-8 rounded-lg" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-          <h3 class="text-2xl font-bold text-blue-400 mb-4">Tetang kami</h3>
-          <p class="text-gray-300 mb-4">Arix Official Adalah Seorang Programer Pemula Kelas 1 SMP Yang Ingin Menempuh Pendikan Jurusan IT, Dan Menjadi Seorang Web Development & Script Development, Dan Bisa Membanggakan Orang Lain Dengan Berbagai project :></p>
-          <a href="https://t.me/ArixOffc" class="text-purple-400 hover:text-purple-300 transition duration-300">Hubungi Kami →</a>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 gradient-bg">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-up" data-aos-duration="1000">Pricing</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="glassmorphism p-8 rounded-lg hover:hologram-effect transition duration-500"
+                    data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <h3 class="text-2xl font-bold text-blue-400 mb-4">Free Plan</h3>
+                    <p class="text-4xl font-bold text-purple-400 mb-4">Rp.00.00<span
+                            class="text-lg text-gray-300"></span></p>
+                    <ul class="text-gray-300 mb-6">
+                        <li>200 Request/hari</li>
+                        <li>Free</li>
+                    </ul>
+                    <a href="/docs"
+                        class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 rounded-lg text-lg font-semibold transition duration-300">Get
+                        Started</a>
+                </div>
+                <div class="glassmorphism p-8 rounded-lg hover:hologram-effect transition duration-500"
+                    data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                    <h3 class="text-2xl font-bold text-purple-400 mb-4">Starter Plan</h3>
+                    <p class="text-4xl font-bold text-blue-400 mb-4">Rp.5.000<span
+                            class="text-lg text-gray-300">/bulan</span></p>
+                    <ul class="text-gray-300 mb-6">
+                        <li>10000 Request/hari</li>
+                        <li>Free Req Key</li>
+                    </ul>
+                    <a href="https://wa.me/6288228895081?text=Saya+Ingin+Membeli+Key+Starter+Plan"
+                        class="bg-purple-500 hover:bg-purple-600 text-white py-2 px-6 rounded-lg text-lg font-semibold transition duration-300">Get
+                        Started</a>
+                </div>
+                <div class="glassmorphism p-8 rounded-lg hover:hologram-effect transition duration-500"
+                    data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                    <h3 class="text-2xl font-bold text-purple-400 mb-4">Premium Plan</h3>
+                    <p class="text-4xl font-bold text-blue-400 mb-4">Rp.15.000<span
+                            class="text-lg text-gray-300">/bulan</span></p>
+                    <ul class="text-gray-300 mb-6">
+                        <li>50000 Request/hari</li>
+                        <li>Free Req Key</li>
+                    </ul>
+                    <a href="https://wa.me/6288228895081?text=Saya+Ingin+Membeli+Key+Premium+Plan"
+                        class="bg-green-500 hover:bg-green-600 text-white py-2 px-6 rounded-lg text-lg font-semibold transition duration-300">Get
+                        Started</a>
+                </div>
+                <div class="glassmorphism p-8 rounded-lg hover:hologram-effect transition duration-500"
+                    data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                    <h3 class="text-2xl font-bold text-purple-400 mb-4">VIP Plan</h3>
+                    <p class="text-4xl font-bold text-blue-400 mb-4">Rp.20.000<span
+                            class="text-lg text-gray-300">/bulan</span></p>
+                    <ul class="text-gray-300 mb-6">
+                        <li>Unlimited Request</li>
+                        <li>Free Req Key</li>
+                        <li>Free Panel (Jika Ada)</li>
+                    </ul>
+                    <a href="https://wa.me/6288228895081?text=Saya+Ingin+Membeli+Key+VIP+Plan"
+                        class="bg-red-500 hover:bg-red-600 text-white py-2 px-6 rounded-lg text-lg font-semibold transition duration-300">Get
+                        Started</a>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Pricing Section -->
-  <section id="pricing" class="py-20 gradient-bg">
-    <div class="container mx-auto px-4">
-      <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-up" data-aos-duration="1000">Pricing</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="glassmorphism p-8 rounded-lg hover:hologram-effect transition duration-500" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-          <h3 class="text-2xl font-bold text-blue-400 mb-4">Free Plan</h3>
-          <p class="text-4xl font-bold text-purple-400 mb-4">Rp.00.00<span class="text-lg text-gray-300"></span></p>
-          <ul class="text-gray-300 mb-6">
-            <li>200 Request/hari</li>
-            <li>Free</li>
-          </ul>
-          <a href="/docs" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 rounded-lg text-lg font-semibold transition duration-300">Get Started</a>
+    <!-- CTA Section -->
+    <section id="get-started" class="py-20">
+        <div class="container mx-auto text-center px-4">
+            <h2 class="text-4xl font-bold mb-8" data-aos="fade-up" data-aos-duration="1000">Ingin Mencoba Fitur
+                Sekarang?</h2>
+            <p class="text-xl text-gray-300 mb-8">Tekan Tombol Di bawah Untuk Mencoba Fitur Api Kami!.</p>
+            <a href="/docs"
+                class="bg-purple-500 hover:bg-purple-600 text-white py-3 px-8 rounded-lg text-lg font-semibold transition duration-300 shadow-lg hover:shadow-xl">
+                Coba Sekarang
+            </a>
         </div>
-        <div class="glassmorphism p-8 rounded-lg hover:hologram-effect transition duration-500" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-          <h3 class="text-2xl font-bold text-purple-400 mb-4">Starter Plan</h3>
-          <p class="text-4xl font-bold text-blue-400 mb-4">Rp.5.000<span class="text-lg text-gray-300">/bulan</span></p>
-          <ul class="text-gray-300 mb-6">
-            <li>10000 Request/hari</li>
-            <li>Free Req Key</li>
-          </ul>
-          <a href="https://wa.me/6288228895081?text=Saya+Ingin+Membeli+Key+Starter+Plan" class="bg-purple-500 hover:bg-purple-600 text-white py-2 px-6 rounded-lg text-lg font-semibold transition duration-300">Get Started</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="glassmorphism py-8">
+        <div class="container mx-auto text-center">
+            <p class="text-gray-300">&copy; 2025 ZHIZI API. All rights reserved. By ArixOffc</p>
         </div>
-        <div class="glassmorphism p-8 rounded-lg hover:hologram-effect transition duration-500" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-            <h3 class="text-2xl font-bold text-purple-400 mb-4">Premium Plan</h3>
-            <p class="text-4xl font-bold text-blue-400 mb-4">Rp.15.000<span class="text-lg text-gray-300">/bulan</span></p>
-            <ul class="text-gray-300 mb-6">
-              <li>50000 Request/hari</li>
-              <li>Free Req Key</li>
-            </ul>
-            <a href="https://wa.me/6288228895081?text=Saya+Ingin+Membeli+Key+Premium+Plan" class="bg-green-500 hover:bg-green-600 text-white py-2 px-6 rounded-lg text-lg font-semibold transition duration-300">Get Started</a>
-          </div>
-          <div class="glassmorphism p-8 rounded-lg hover:hologram-effect transition duration-500" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-            <h3 class="text-2xl font-bold text-purple-400 mb-4">VIP Plan</h3>
-            <p class="text-4xl font-bold text-blue-400 mb-4">Rp.20.000<span class="text-lg text-gray-300">/bulan</span></p>
-            <ul class="text-gray-300 mb-6">
-              <li>Unlimited Request</li>
-              <li>Free Req Key</li>
-              <li>Free Panel (Jika Ada)</li>
-            </ul>
-            <a href="https://wa.me/6288228895081?text=Saya+Ingin+Membeli+Key+VIP+Plan" class="bg-red-500 hover:bg-red-600 text-white py-2 px-6 rounded-lg text-lg font-semibold transition duration-300">Get Started</a>
-          </div>
-      </div>
-    </div>
-  </section>
+    </footer>
 
-  <!-- CTA Section -->
-  <section id="get-started" class="py-20">
-    <div class="container mx-auto text-center px-4">
-      <h2 class="text-4xl font-bold mb-8" data-aos="fade-up" data-aos-duration="1000">Ingin Mencoba Fitur Sekarang?</h2>
-      <p class="text-xl text-gray-300 mb-8">Tekan Tombol Di bawah Untuk Mencoba Fitur Api Kami!.</p>
-      <a href="/docs" class="bg-purple-500 hover:bg-purple-600 text-white py-3 px-8 rounded-lg text-lg font-semibold transition duration-300 shadow-lg hover:shadow-xl">
-        Coba Sekarang
-      </a>
-    </div>
-  </section>
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+        // Ambil elemen tombol hamburger dan menu mobile
+        const hamburgerButton = document.querySelector('button.md\\:hidden');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-  <!-- Footer -->
-  <footer class="glassmorphism py-8">
-    <div class="container mx-auto text-center">
-      <p class="text-gray-300">&copy; 2025 ZHIZI API. All rights reserved. By ArixOffc</p>
-    </div>
-  </footer>
-
-  <!-- AOS Script -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
+        // Tambahkan event listener untuk tombol hamburger
+        hamburgerButton.addEventListener('click', () => {
+            // Toggle class 'open' pada menu mobile
+            mobileMenu.classList.toggle('open');
+            // Toggle class 'hidden' untuk memastikan menu tersembunyi saat tidak digunakan
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
 </body>
+
 </html>
