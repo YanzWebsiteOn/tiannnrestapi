@@ -89,7 +89,7 @@ async function ytdl(url, type = 'mp3') {
 }
 
   // Endpoint Tiktok Downloader
-  app.get('/api/dl/tiktok', async (req, res) => {
+  app.get('/api/dl/ytmp3', async (req, res) => {
     try {
       const { url, apikey, type } = req.query;
       
