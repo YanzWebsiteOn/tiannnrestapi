@@ -7,6 +7,7 @@
     <title>Contact Owner - Zhizi API</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         @keyframes float {
             0%, 100% {
@@ -172,8 +173,10 @@
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
 
+            const BOT_TOKEN = '7569646765:AAGtGGiEYMxF7YE-LLsLEO5dJV_fPTyMf3M'; // Token bot Anda
+            const CHAT_ID = '7472554514'; // Chat ID Anda
             const text = `Pesan Baru dari Website:\n\nNama: ${name}\nEmail: ${email}\nPesan: ${message}`;
-            const url = `https://api.telegram.org/bot7569646765:AAGtGGiEYMxF7YE-LLsLEO5dJV_fPTyMf3M/sendMessage`;
+            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
 
             try {
                 const response = await fetch(url, {
@@ -182,20 +185,36 @@
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        chat_id: 7472554514,
+                        chat_id: CHAT_ID,
                         text: text,
                     }),
                 });
 
                 if (response.ok) {
-                    alert('Pesan berhasil dikirim!');
+                    // Tampilkan popup success menggunakan SweetAlert2
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Pesan Terkirim!',
+                        text: 'Pesan Anda berhasil dikirim.',
+                        confirmButtonText: 'OK',
+                    });
                     contactForm.reset(); // Reset form setelah berhasil dikirim
                 } else {
-                    alert('Gagal mengirim pesan. Silakan coba lagi.');
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Gagal Mengirim Pesan',
+                        text: 'Silakan coba lagi.',
+                        confirmButtonText: 'OK',
+                    });
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('Terjadi kesalahan. Silakan coba lagi.');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Terjadi Kesalahan',
+                    text: 'Silakan coba lagi.',
+                    confirmButtonText: 'OK',
+                });
             }
         });
     </script>
