@@ -175,7 +175,12 @@
 
             const BOT_TOKEN = '7569646765:AAGtGGiEYMxF7YE-LLsLEO5dJV_fPTyMf3M'; // Token bot Anda
             const CHAT_ID = '7472554514'; // Chat ID Anda
-            const text = `Pesan Baru dari Website:\n\nNama: ${name}\nEmail: ${email}\nPesan: ${message}`;
+            const text = `
+╭⟬ Pesan Baru dari Website:
+┆• Nama: ${name}
+┆• Email: ${email}
+┆• Pesan: ${message}
+╰────────────◇`;
             const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
 
             try {
@@ -194,8 +199,8 @@
                     // Tampilkan popup success menggunakan SweetAlert2
                     Swal.fire({
                         icon: 'success',
-                        title: 'Pesan Terkirim!',
-                        text: 'Pesan Anda berhasil dikirim.',
+                        title: 'Succes!',
+                        text: 'Pesan Anda berhasil dikirim Ke Owner.',
                         confirmButtonText: 'OK',
                     });
                     contactForm.reset(); // Reset form setelah berhasil dikirim
