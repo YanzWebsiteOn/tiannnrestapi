@@ -62,7 +62,7 @@ const heroes = [
       res.status(200).json({
             status: true,
             hero: chosenHero.hero,
-            clues: [chosenHero.clue1, chosenHero.clue2, chosenHero.clue3]
+            clue: [chosenHero.clue1, chosenHero.clue2, chosenHero.clue3]
       });
     } catch (error) {
       res.status(500).json({ status: false, error: 'Terjadi kesalahan saat mengambil data.' });
