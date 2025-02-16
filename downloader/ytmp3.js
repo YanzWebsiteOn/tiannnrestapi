@@ -28,7 +28,7 @@ scheduleReset();
 module.exports = function(app) {
 
 const headers = {
-    'Accept': '/',
+    'Accept': '*/*',
     'Accept-Language': 'id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7',
     'Cache-Control': 'no-cache',
     'Connection': 'keep-alive',
@@ -64,11 +64,11 @@ async function ytdl(url, type = 'mp3') {
     try {
         const vidId = url.match(ytRegex)[1];
         const webpage = await axios.get('https://ytmp3.cc/Vluk/', { headers });
-        const tokenJson = JSON.parse(atob(webpage.data?.match(/atob👦'(.?)'👦/)?.[1]).match(/var gC = ({[\s\S]?});/)?.[1]); 
+        const tokenJson = JSON.parse(atob(webpage.data?.match(/atob👦'(.*?)'👦/)?.[1]).match(/var gC = ({[\s\S]*?});/)?.[1]); 
         const token = btoa(tokenJson[2] + '-' + decodeToken(tokenJson, tokenJson.f[7]));
 
-        const init = await axios.get(https://d.ecoe.cc/api/v1/init?k=${token}&_=${Math.random()}, { headers }).then(res => res.data);
-        const convert = await axios.get(${init.convertURL}&v=https://www.youtube.com/watch?v=${vidId}&f=${type}&_=${Math.random()}, { headers }).then(res => res.data);
+        const init = await axios.get(`https://d.ecoe.cc/api/v1/init?k=${token}&_=${Math.random()}`, { headers }).then(res => res.data);
+        const convert = await axios.get(`${init.convertURL}&v=https://www.youtube.com/watch?v=${vidId}&f=${type}&_=${Math.random()}`, { headers }).then(res => res.data);
 
         if (convert.redirectURL) {
             const res = await axios.get(convert.redirectURL, { headers }).then(res => res.data);
@@ -84,7 +84,7 @@ async function ytdl(url, type = 'mp3') {
             return { type, title: res.title, link: convert.downloadURL };
         }
     } catch (error) {
-        throw new Error(Download error: ${error.message});
+        throw new Error(`Download error: ${error.message}`);
     }
 }
 
