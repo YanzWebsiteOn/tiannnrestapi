@@ -175,7 +175,7 @@
             const message = document.getElementById('message').value;
 
             const text = `Pesan Baru dari Website:\n\nNama: ${name}\nEmail: ${email}\nPesan: ${message}`;
-            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+            const url = `https://api.telegram.org/bot7569646765:AAGtGGiEYMxF7YE-LLsLEO5dJV_fPTyMf3M/sendMessage`;
 
             try {
                 const response = await fetch(url, {
@@ -184,7 +184,7 @@
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        chat_id: CHAT_ID,
+                        chat_id: 7472554514,
                         text: text,
                     }),
                 });
