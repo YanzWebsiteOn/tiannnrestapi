@@ -21,7 +21,6 @@ require('./ai/LuminAI')(app);
 require('./ai/zhiziai')(app);
 require('./ai/ChristyAi')(app);
 require('./ai/joko')(app);
-require('./ai/simi')(app);
 
 // Import Maker
 require('./maker/brat')(app);
@@ -58,6 +57,7 @@ require('./tools/tekstoimg')(app);
 // Improt Games
 require('./games/tekateki')(app);
 require('./games/tebaklirik')(app);
+require('./games/tebakheroml')(app);
 
 // Full Kode Di Github Saya : https://github.com/YanzOffc/
 
