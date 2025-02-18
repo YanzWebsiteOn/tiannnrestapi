@@ -1,6 +1,7 @@
 module.exports = {
   API_KEYS: {
     freekey: { key: "freekey", limit: 200, unlimited: false }, // 100 request per hari
+    rezzxarix: { key: "rezzxarix", limit: 10000, unlimited: false }, // 100 request per hari
     arixs: { key: "arixs", limit: Infinity, unlimited: true }, // Unlimited request
     visualstrom: { key: "visualstrom", limit: Infinity, unlimited: true }, 
   },
