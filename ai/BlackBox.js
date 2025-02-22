@@ -98,7 +98,7 @@ async function blackbox(text) {
 }
 
   // Endpoint LuminAI
-  app.get('/api/ai/luminai', async (req, res) => {
+  app.get('/api/ai/blackbox', async (req, res) => {
     try {
       const { text, apikey } = req.query;
 
