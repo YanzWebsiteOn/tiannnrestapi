@@ -16,6 +16,7 @@ app.use(cors());
 
 // Import AI
 require('./ai/ai4chat')(app);
+require('./ai/BlackBox')(app);
 require('./ai/Aianswer')(app);
 require('./ai/LuminAI')(app);
 require('./ai/zhiziai')(app);
