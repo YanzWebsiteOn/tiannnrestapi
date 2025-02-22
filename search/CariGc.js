@@ -28,9 +28,9 @@ scheduleReset();
 
 module.exports = function(app) {
   // Fungsi untuk mengambil data aplikasi dari Groupsor
-async function cariGC(query) {
+async function cariGC(search) {
  try {
- const { data } = await axios.get(`https://groupsor.link/group/searchmore/${query.replace(/ /g, '-')}`);
+ const { data } = await axios.get(`https://groupsor.link/group/searchmore/${search.replace(/ /g, '-')}`);
  const $ = cheerio.load(data);
  const result = [];
 
@@ -95,7 +95,7 @@ app.get('/api/search/carigc', async (req, res) => {
     }
 
     try {
-      const result = await PlayStore(search);
+      const result = await cariGC(search);
       res.status(200).json({
         status: 200,
         creator: "Arix",
