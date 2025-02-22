@@ -52,6 +52,7 @@ require('./search/spotify')(app);
 require('./search/CariGc')(app);
 
 // Import Tools
+require('./tools/CreateSubdo')(app);
 require('./tools/morse')(app);
 require('./tools/totext')(app);
 require('./tools/ttstalk')(app);
