@@ -1,4 +1,5 @@
 const axios = require('axios');
+const cheerio = require('cheerio');
 const { API_KEYS, RESET_TIME, TIMEZONE } = require('../settings');
 const moment = require('moment-timezone');
 
