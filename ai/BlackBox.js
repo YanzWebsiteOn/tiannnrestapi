@@ -136,7 +136,7 @@ async function blackbox(text) {
         });
       }
 
-      const response = await fetchContent(text);
+      const response = await blackbox(text);
       res.status(200).json({
         status: 200,
         creator: "Arix",
