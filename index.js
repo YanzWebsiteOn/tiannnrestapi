@@ -48,6 +48,7 @@ require('./search/surah')(app);
 require('./search/jadwalsholat')(app);
 require('./search/playstore')(app);
 require('./search/spotify')(app);
+require('./search/CariGc')(app);
 
 // Import Tools
 require('./tools/morse')(app);
