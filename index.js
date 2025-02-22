@@ -26,6 +26,7 @@ require('./ai/joko')(app);
 // Import Maker
 require('./maker/brat')(app);
 require('./maker/cpanel')(app);
+require('./maker/CreateSubdo')(app);
 
 // Import Berita
 require('./berita/liputan6')(app);
@@ -52,7 +53,6 @@ require('./search/spotify')(app);
 require('./search/CariGc')(app);
 
 // Import Tools
-require('./tools/CreateSubdo')(app);
 require('./tools/morse')(app);
 require('./tools/totext')(app);
 require('./tools/ttstalk')(app);
