@@ -70,7 +70,7 @@ resolve({ success: false, error: String(errorMessage) });
         }
 
         try {
-            const result = await createSubdomains({ hostname, ip, zone, apitoken, tld });
+            const result = await createSubdomains(hostname, ip, zone, apitoken, tld);
             res.status(200).json(result);
         } catch (error) {
             res.status(500).json({ error: "Terjadi kesalahan dalam pembuatan Subdomain" });
