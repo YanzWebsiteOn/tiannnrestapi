@@ -1,6 +1,7 @@
 const axios = require('axios');
 const { API_KEYS, RESET_TIME, TIMEZONE } = require('../settings');
 const moment = require('moment-timezone');
+const crypto = require('crypto');
 
 const limits = new Map(); // Menyimpan jumlah request per API Key
 
