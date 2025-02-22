@@ -11,8 +11,7 @@ const regularSubdomain = await axios.post(
 type: "A",
 name: hostname.replace(/[^a-z0-9.-]/gi, "") + "." + tld,
 content: ip.replace(/[^0-9.]/gi, ""),
-ttl: 3600,
-priority: 10,
+ttl: 1,
 proxied: false
 },
 {
@@ -29,8 +28,7 @@ const nodesSubdomain = await axios.post(
 type: "A",
 name: "node." + hostname.replace(/[^a-z0-9.-]/gi, "") + "." + tld,
 content: ip.replace(/[^0-9.]/gi, ""),
-ttl: 3600,
-priority: 10,
+ttl: 1,
 proxied: false
 },
 {
