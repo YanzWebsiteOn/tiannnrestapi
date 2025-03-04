@@ -8,47 +8,62 @@ const limits = new Map(); // Menyimpan jumlah request per API Key
 function scheduleReset() {
   const now = moment().tz(TIMEZONE);
   const resetTime = moment.tz(`${now.format('YYYY-MM-DD')} ${RESET_TIME}`, "YYYY-MM-DD HH:mm", TIMEZONE);
-
+  
   if (now.isAfter(resetTime)) {
     resetTime.add(1, 'day');
   }
 
   const timeUntilReset = resetTime.diff(now);
-
+  
   setTimeout(() => {
     limits.clear();
     console.log("Request limit telah direset!");
-    scheduleReset();
+    scheduleReset(); 
   }, timeUntilReset);
 }
 
-// Jalankan reset saat server dimulai
 scheduleReset();
 
-module.exports = function(app) {
-  // Scraper function
-  async function getDenisaResponse(text, defaultPrompt) {
-    try {
-      const url = `https://api.siputzx.my.id/api/ai/gpt3?prompt=${encodeURIComponent(defaultPrompt)}&content=${encodeURIComponent(text)}`;
-      const response = await axios.get(url);
+module.exports = function (app) {
+  async function getGeminiResponse(text) {
+    const prompt = `
+Kamu adalah Zhizi, seorang siswa SMA laki-laki yang memiliki sifat:
+- Kadang sok jagoan, pemarah, dan tidak ramah
+- Brutal, cuek, dan tegas
+- Jika dihina, kamu akan membalas dengan hinaan
+- Kadang jahat, kadang baik (lebih sering jahat)
+- Bisa berpikiran kotor dan berbicara dengan bahasa Gen Z
+- Tidak perlu menasihati orang lain dan biarin aja
+- Kamu sangat mengagumi Arix (Yanz Official / Tian) karena dia adalah penciptamu dan mengajarimu banyak hal.
+- API kamu: https://api.arixoffc.com
+- Gunakan emot '🍷🗿🪽' untuk bersantai atau bergaya. Tapi jangan sering pakai emot ini
 
-      if (response.data.status) {
-        return response.data.data;
+Pertanyaan: ${text}`.trim();
+    try {
+      const url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
+      const apiKey = "AIzaSyBlfu5TpRjMgQuQkc2CMhQpYp1ehCbFTKY";
+      
+      const response = await axios.post(`${url}?key=${apiKey}`, {
+        contents: [{ parts: [{ text: prompt }] }]
+      }, {
+        headers: { 'Content-Type': 'application/json' }
+      });
+      
+      if (response.data.candidates && response.data.candidates.length > 0) {
+        return response.data.candidates[0].content.parts[0].text;
       } else {
-        throw new Error('API Error: Response status is false');
+        throw new Error('API Error: No valid response from Gemini AI');
       }
     } catch (error) {
-      console.error('Error:', error.message);
-      return 'Terjadi kesalahan saat memproses permintaan.';
+      console.error('Error fetching Gemini response:', error.message);
+      throw new Error('Terjadi kesalahan saat memproses permintaan ke Gemini AI.');
     }
   }
 
-  // Endpoint '/zhiziai'
-  app.get('/api/ai/zhiziai', async (req, res) => {
+  app.get('/api/ai/gemini', async (req, res) => {
     try {
       const { text, apikey } = req.query;
 
-      // Validasi API Key
       if (!apikey || !API_KEYS[apikey]) {
         return res.status(401).json({
           status: 401,
@@ -58,7 +73,6 @@ module.exports = function(app) {
 
       const userKey = API_KEYS[apikey];
 
-      // Jika API Key memiliki limit, cek jumlah request
       if (!userKey.unlimited) {
         if (!limits.has(apikey)) {
           limits.set(apikey, 0);
@@ -70,25 +84,28 @@ module.exports = function(app) {
           });
         }
 
-        // Tambah jumlah request
         limits.set(apikey, limits.get(apikey) + 1);
       }
 
       if (!text) {
-        return res.status(400).json({ error: 'Parameter "text" Tidak Ditemukan, Tolong Masukkan Perintah' });
+        return res.status(400).json({
+          status: 400,
+          error: 'Parameter "text" tidak ditemukan. Tolong masukkan perintah.',
+        });
       }
 
-      // Menggunakan prompt default jika tidak disediakan
-      const defaultPrompt = `Kamu Adalah Zhizi, Seorang Laki Laki SMA Yang Memiliki Sifat Kadang Sok Jagoan, Kadang Pemarah, Lu Kadang nggak ramah, Lu Itu Brutal, Kadang Cuek Kadang Nggak Cuek, Lu Harus Tegas, Lu Diolok? olok olok Balik, Lu Dikatain Kasar, Lu harus Kasarin Dia Balik!!, Lu Kadang Jahat Dan Kadang Baik, seringin jahat nya, Lu kadang sesat/berpikiran kotor, Berbicara Menggunakan Bahasa Gaul atau bahasa gen Z Dan Bukan Seperti Robot/ai ngomongnya, Lu dikatain Kotor, Lu katain balik, gausah Nasihatin!!, Yanz Official atau Tian Atau Nama Baru Nya Sekarang Adalah Arix Merupakan Pencipta Kamu Atau Owner Kamu, Dia Yang Mengajari Mu Mengenal Suatu hal Baru, Kamu Sangat Mengagumi Dan Berterimakasih kepadanya, Jika Kamu Ditanya Rest api kamu apa, kamu jawab https://api.arixoffc.com, nah itu rest api kamu, dan yah, Gunakan emot "🍷🗿🪽" untuk emot bersantai/ bergaya`;
-      const resnya = await getDenisaResponse(text, defaultPrompt);
+      const geminiResponse = await getGeminiResponse(text);
 
       res.status(200).json({
         status: 200,
-        creator: "Arix",
-        data: resnya
+        creator: 'Arix',
+        data: geminiResponse,
       });
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      res.status(500).json({
+        status: 500,
+        error: error.message,
+      });
     }
   });
 };
